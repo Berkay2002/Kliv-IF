@@ -15,12 +15,7 @@ const members = [
     email: 'ordforande@kliv.nu',
     image: '/sektionen/tozak.jpg',
   },
-  {
-    name: '',
-    title: 'Kassör',
-    email: 'kassor@albyradet.nu',
-    image: '',
-  },
+
   // Add more members here
 ];
 
