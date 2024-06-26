@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({
       />
       {logo ? (
         <Box sx={{ position: 'relative', zIndex: 1 }}>
-          <Image src={logo} alt="logo" width={isMobile ? 100 : 200} height={isMobile ? 100 : 200} />
+          <Image src={logo} alt="logo" width={isMobile ? 150 : 300} height={isMobile ? 150 : 300} />
         </Box>
       ) : (
         <Typography variant="h1" sx={{ position: 'relative', zIndex: 1, color: 'white', fontSize: isMobile ? '3rem' : '4rem' }}>
