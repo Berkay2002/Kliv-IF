@@ -64,10 +64,10 @@ const NavBar = () => {
           <Link href="/" passHref legacyBehavior>
             <a>
               <Image 
-                src="/logo/Vit transparant.png" 
+                src="/logo/transparant.svg" 
                 alt="Alby Rådet" 
-                width={isMobile || isDesktop ? 100 : 75} // Increase size on mobile
-                height={isMobile || isDesktop ? 100 : 75} 
+                width={isMobile || isDesktop ? 75 : 50} // Increase size on mobile
+                height={isMobile || isDesktop ? 75 : 50} 
               />
             </a>
           </Link>
@@ -137,7 +137,7 @@ const NavBar = () => {
                             sx={{
                               borderBottom: pathname === page.path ? '2px solid #FFEB3B' : 'none',
                               color: '#FFFFFF',
-                              fontSize: '1rem', // Increase font size here
+                              fontSize: '1.5rem', // Increase font size here
                             }}
                           >
                             {page.name}
@@ -152,10 +152,10 @@ const NavBar = () => {
                   {/* Logo and Social Media Icons */}
                   <Box sx={{ textAlign: 'center', mt: "0.5rem" }}> {/* Centers the logo and icons */}
                     <Image
-                      alt="Alby Rådet Logo"
-                      src="/logo/Vit transparant.png"
-                      width={125}
-                      height={125}
+                      alt="Kliv Idrottsförening"
+                      src="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg"
+                      width={150}
+                      height={150}
                     />
 
                     <SocialMediaIcons />

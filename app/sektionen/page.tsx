@@ -12,14 +12,14 @@ const members = [
   {
     name: 'Muhammet Tozak',
     title: 'Ordförande',
-    email: 'ordforande@albyradet.nu',
+    email: 'ordforande@kliv.nu',
     image: '/sektionen/tozak.jpg',
   },
   {
-    name: 'Johannes Almaaijan',
+    name: '',
     title: 'Kassör',
     email: 'kassor@albyradet.nu',
-    image: '/sektionen/johannes.jpg',
+    image: '',
   },
   // Add more members here
 ];
@@ -41,7 +41,7 @@ const Sektionen = () => {
 
   return (
     <>
-      <Header title="SEKTIONEN" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
+      <Header title="OM OSS" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
 
       <Divider sx={{ my: 6 }} />
 

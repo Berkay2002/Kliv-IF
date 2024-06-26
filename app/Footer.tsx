@@ -35,8 +35,9 @@ const Footer = () => {
       {/* Add your logo here */}
       <Grid item xs={12} md={4}>
         <Grid container justifyContent="center" alignItems="center">
-          <Image src="/logo/Vit transparant.png" height={200} width={200} alt="Logo" />
-          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+          <Image src="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg" height={200} width={200} alt="Logo" />
+          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+            
             <Link
               target="_blank"
               rel="noopener"
@@ -65,10 +66,10 @@ const Footer = () => {
           Kontakt
         </Typography>
         <Typography color="white" align={isMobile ? 'center' : 'left'}>
-          Alby Rådet <br />
+          Kliv Idrottsförening <br />
           Norra Botkyrka <br />
-          145 57 Norsborg <br />
-          info@albyradet.se
+          145 75 Norsborg <br />
+          info@kliv.se
         </Typography>
         <br />
       </Grid>
