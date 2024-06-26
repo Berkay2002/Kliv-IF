@@ -68,7 +68,9 @@ const Header: React.FC<HeaderProps> = ({
             autoPlay
             loop
             muted
+            playsInline // Important for iOS to autoplay without controls
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            poster={isMobile ? backgroundImageMobile : backgroundImageDesktop} // Fallback image
           />
         ) : (
           <Image
