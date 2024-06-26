@@ -29,12 +29,12 @@ const NavBar = () => {
 
   const pages = [
     { name: 'HEM', path: '/' },
-    { name: 'AR INNOVATION', path: '/ar-innovation' },
-    { name: 'AR GAMING', path: '/ar-gaming' },
-    { name: 'AR SPORTS', path: '/ar-sports' },
+    { name: 'OM OSS', path: '/sektionen' },
+    { name: 'LOVAKTIVITETER', path: '/lovaktiviteter' },
+    { name: 'SPORTSTRUCK', path: '/sportstruck' },
+    { name: 'JUDO', path: '/judo' },
     { name: 'BLI MEDLEM', path: '/bli-medlem' },
     { name: 'KONTAKTA OSS', path: '/kontakta-oss' },
-    { name: 'SEKTIONEN', path: '/sektionen' },
   ];
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
