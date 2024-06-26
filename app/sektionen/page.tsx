@@ -41,7 +41,7 @@ const Sektionen = () => {
 
   return (
     <>
-      <Header title="OM OSS" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
+      <Header title="OM OSS" backgroundImageDesktop='/judo/judo2.png' backgroundImageMobile='/videos/video1.mp4' />
 
       <Divider sx={{ my: 6 }} />
 

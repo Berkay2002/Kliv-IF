@@ -6,7 +6,7 @@ import Header from '../header';
 const Judo = () => {
   return (
     <>
-      <Header title="JUDO" backgroundImageDesktop='/judo/judo2.png' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
+      <Header title="JUDO" backgroundImageDesktop='/judo/judo2.png' backgroundImageMobile='/videos/video1.mp4' />
       <Container>
 
       </Container>

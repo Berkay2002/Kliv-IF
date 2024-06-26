@@ -7,9 +7,35 @@ import Image from 'next/image';
 import CustomWavyBackground from './CustomWavyBackground';
 import { MobileStateContext } from './MobileContext';
 
-const Header = ({ title, backgroundImageMobile, backgroundImageDesktop, backgroundPattern }: { title: string; backgroundImageMobile: string; backgroundImageDesktop: string; backgroundPattern?: string }) => {
-  const { isMobile, isDesktop } = useContext(MobileStateContext);
-  
+{/* The Header will be able to display a title and a background image or video for either desktop or mobile*/}
+
+interface HeaderProps {
+  title?: string;
+  logo?: string;
+  backgroundImageMobile?: string;
+  backgroundImageDesktop?: string;
+  backgroundVideoMobile?: string;
+  backgroundVideoDesktop?: string;
+  backgroundPattern?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({
+  title,
+  logo,
+  backgroundImageMobile,
+  backgroundImageDesktop,
+  backgroundVideoMobile,
+  backgroundVideoDesktop,
+  backgroundPattern,
+}) => {
+  const { isMobile } = useContext(MobileStateContext);
+
+  const backgroundSrc = isMobile
+    ? backgroundVideoMobile || backgroundImageMobile
+    : backgroundVideoDesktop || backgroundImageDesktop;
+
+  const isVideo = backgroundSrc && backgroundSrc.endsWith('.mp4');
+
   return (
     <Box
       sx={{
@@ -36,14 +62,24 @@ const Header = ({ title, backgroundImageMobile, backgroundImageDesktop, backgrou
           zIndex: -1,
         }}
       >
-        <Image
-          src={isMobile ? backgroundImageMobile : backgroundImageDesktop}
-          alt="background"    
-          quality={100}
-          priority
-          layout="fill"
-          style={{ objectFit: 'cover' }}
-        />
+        {isVideo ? (
+          <video
+            src={backgroundSrc}
+            autoPlay
+            loop
+            muted
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+        ) : (
+          <Image
+            src={backgroundSrc || ''}
+            alt="background"
+            quality={100}
+            priority
+            layout="fill"
+            style={{ objectFit: 'cover' }}
+          />
+        )}
       </Box>
       <Box
         sx={{
@@ -55,9 +91,15 @@ const Header = ({ title, backgroundImageMobile, backgroundImageDesktop, backgrou
           backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the overlay color
         }}
       />
-      <Typography variant="h1" sx={{ position: 'relative', zIndex: 1, color: 'white', fontSize: isMobile ? '3rem' : '4rem' }}>
-        {title}
-      </Typography>
+      {logo ? (
+        <Box sx={{ position: 'relative', zIndex: 1 }}>
+          <Image src={logo} alt="logo" width={isMobile ? 100 : 200} height={isMobile ? 100 : 200} />
+        </Box>
+      ) : (
+        <Typography variant="h1" sx={{ position: 'relative', zIndex: 1, color: 'white', fontSize: isMobile ? '3rem' : '4rem' }}>
+          {title}
+        </Typography>
+      )}
       <Box
         sx={{
           position: 'absolute',

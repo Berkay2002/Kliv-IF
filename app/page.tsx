@@ -9,7 +9,7 @@ import News from './News';
 const Home = () => {
   return (
     <>
-      <Header title="HEM" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
+      <Header logo="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg" backgroundImageDesktop='/judo/judo2.png' backgroundImageMobile='/videos/video1.mp4' />
       
       <Divider sx={{ my: 6 }} />
 
