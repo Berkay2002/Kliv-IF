@@ -18,6 +18,8 @@ const NavBar = () => {
   const pathname = usePathname();
   const { data: session } = useSession();
 
+  
+
   useEffect(() => {
     const handleScroll = () => {
       setScroll(window.scrollY > 50);
