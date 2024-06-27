@@ -144,14 +144,14 @@ const NavBar = () => {
                 >
                   <List>
                     {pages.map((page, index) => (
-                      <ListItem key={index} sx={{ justifyContent: 'center' }}>
+                      <ListItem key={index} sx={{ justifyContent: 'center', marginBottom: '-2%' /* Adjust this value as needed */ }}>
                         <Link href={page.path} passHref>
                           <Button
                             color="inherit"
                             sx={{
                               borderBottom: pathname === page.path ? '2px solid #FFEB3B' : 'none',
                               color: '#FFFFFF',
-                              fontSize: '1.25rem',
+                              fontSize: '1.2rem',
                             }}
                           >
                             {page.name}
@@ -161,14 +161,14 @@ const NavBar = () => {
                     ))}
                     {session ? (
                       <ListItem sx={{ justifyContent: 'center' }}>
-                        <Button color="inherit" onClick={handleLogout} sx={{ color: '#FFFFFF', fontSize: '1.25rem' }}>
+                        <Button color="inherit" onClick={handleLogout} sx={{ color: '#FFFFFF', fontSize: '1rem' }}>
                           Logga Ut
                         </Button>
                       </ListItem>
                     ) : (
                       <ListItem sx={{ justifyContent: 'center' }}>
                         <Link href="/login" passHref>
-                          <Button color="inherit" sx={{ color: '#FFFFFF', fontSize: '1.25rem' }}>
+                          <Button color="inherit" sx={{ color: '#FFFFFF', fontSize: '1.2rem' }}>
                             Logga In
                           </Button>
                         </Link>

@@ -6,7 +6,7 @@ import { Container, Grid, Typography, Card, CardMedia, CardContent, useMediaQuer
 import Image from 'next/image';
 import Header from '../header';
 import Documents from '../Documents';
-import { useFormik } from 'formik';
+
 
 const members = [
   {
@@ -23,16 +23,6 @@ const Sektionen = () => {
   const theme = useTheme();
   const matchesSmall = useMediaQuery(theme.breakpoints.between('xs', 'md'));
 
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      message: ''
-    },
-    onSubmit: values => {
-      console.log(JSON.stringify(values, null, 2));
-    },
-  });
 
   return (
     <>
