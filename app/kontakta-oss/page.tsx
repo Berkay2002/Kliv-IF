@@ -1,79 +1,88 @@
-// app/pages/kontakta-oss.tsx
-'use client';
+"use client";
 
 import React from 'react';
-import { Container, Grid, Typography, Box, Button, TextField, Divider } from '@mui/material';
-import { useFormik } from 'formik';
-import GoogleMapReact from 'google-map-react';
+import { Container, Grid, Typography, Button, TextField, Divider } from '@mui/material';
+import { useForm } from 'react-hook-form';
 import Header from '../header';
 
-
+interface FormValues {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+}
 
 const Kontakt = () => {
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: '',
-      phone: '',
-      message: ''
-    },
-    onSubmit: values => {
-      console.log(JSON.stringify(values, null, 2));
-    },
-  });
+  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
+
+  const onSubmit = async (data: FormValues) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/kontakta-oss', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Something went wrong. Please try again.');
+      }
+
+      const result = await response.json();
+      console.log(result);
+      alert('Thank you for your message! We will contact you soon.');
+    } catch (error) {
+      console.error(error);
+      alert('Something went wrong. Please try again.');
+    }
+  };
 
   return (
     <>
       <Header title="KONTAKTA OSS" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
-
-      <Divider sx={{ my: 6 }} />  
-
+      <Divider sx={{ my: 6 }} />
       <Container className="kontakta-oss" sx={{ backgroundColor: '#ffffff', py: 8, maxWidth: 'lg' }}>
         <Typography variant="h4" align="center" gutterBottom sx={{ marginBottom: '20px' }}>
           Kontakta oss
         </Typography>
-
         <Grid container spacing={4} justifyContent="center">
-
           <Grid item xs={12} md={5}>
-            <form onSubmit={formik.handleSubmit}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <TextField
                 fullWidth
                 label="Namn"
-                name="name"
-                value={formik.values.name}
-                onChange={formik.handleChange}
+                {...register('name', { required: 'Namn är obligatoriskt' })}
                 margin="normal"
-                required
+                error={!!errors.name}
+                helperText={errors.name ? String(errors.name.message) : ''}
               />
               <TextField
                 fullWidth
                 label="Mail Address"
-                name="email"
                 type="email"
-                value={formik.values.email}
-                onChange={formik.handleChange}
+                {...register('email', { required: 'E-post är obligatoriskt', pattern: { value: /^\S+@\S+$/i, message: 'Ogiltig e-postadress' } })}
                 margin="normal"
-                required
+                error={!!errors.email}
+                helperText={errors.email ? String(errors.email.message) : ''}
               />
               <TextField
                 fullWidth
                 label="Mobil Nummer"
-                name="phone"
-                value={formik.values.phone}
-                onChange={formik.handleChange}
+                {...register('phone', { required: 'Telefonnummer är obligatoriskt' })}
                 margin="normal"
+                error={!!errors.phone}
+                helperText={errors.phone ? String(errors.phone.message) : ''}
               />
               <TextField
                 fullWidth
                 label="Meddelande"
-                name="message"
-                value={formik.values.message}
-                onChange={formik.handleChange}
+                {...register('message', { required: 'Meddelande är obligatoriskt' })}
                 margin="normal"
                 multiline
                 rows={4}
-                required
+                error={!!errors.message}
+                helperText={errors.message ? String(errors.message.message) : ''}
               />
               <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 3 }}>
                 Skicka meddelande
@@ -81,7 +90,6 @@ const Kontakt = () => {
             </form>
           </Grid>
         </Grid>
-        
       </Container>
     </>
   );

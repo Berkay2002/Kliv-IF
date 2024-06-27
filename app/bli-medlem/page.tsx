@@ -10,7 +10,7 @@ const BliMedlem = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      const response = await fetch('http://localhost:3000/api/bli-medlem', {
+      const response = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -66,6 +66,15 @@ const BliMedlem = () => {
                 margin="normal"
                 error={!!errors.phone}
                 helperText={errors.phone ? String(errors.phone.message) : ''}
+              />
+              <TextField
+                fullWidth
+                label="Lösenord"
+                type="password"
+                {...register('password', { required: 'Lösenord är obligatoriskt', minLength: { value: 6, message: 'Lösenordet måste vara minst 6 tecken' } })}
+                margin="normal"
+                error={!!errors.password}
+                helperText={errors.password ? String(errors.password.message) : ''}
               />
               <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 3 }}>
                 Bli Medlem

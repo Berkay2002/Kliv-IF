@@ -1,8 +1,7 @@
-// app/navbar.tsx
 "use client";
 
 import React, { useState, useEffect, useContext } from 'react';
-import { AppBar, Toolbar, Button, Box, Drawer, IconButton, List, ListItem, Typography, Grid } from '@mui/material';
+import { AppBar, Toolbar, Button, Box, Drawer, IconButton, List, ListItem, Grid } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -10,12 +9,14 @@ import { MobileStateContext } from './MobileContext';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SocialMediaIcons from './SocialMediaIcons';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
   const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext);
   const pathname = usePathname();
+  const { data: session } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +27,10 @@ const NavBar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleLogout = () => {
+    signOut();
+  };
 
   const pages = [
     { name: 'HEM', path: '/' },
@@ -38,16 +43,11 @@ const NavBar = () => {
   ];
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
+    if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
       return;
     }
     setOpen(open);
   };
-
 
   return (
     <AppBar 
@@ -56,7 +56,7 @@ const NavBar = () => {
       sx={{ 
         backgroundColor: scroll ? 'rgba(0, 0, 0, 0.8)' : 'transparent', 
         transition: 'background-color 0.3s',
-        width: '100%' // Ensure the AppBar covers the full width
+        width: '100%'
       }}
     >      
       <Toolbar>
@@ -66,7 +66,7 @@ const NavBar = () => {
               <Image 
                 src="/logo/transparant.svg" 
                 alt="Alby Rådet" 
-                width={isMobile || isDesktop ? 75 : 50} // Increase size on mobile
+                width={isMobile || isDesktop ? 75 : 50}
                 height={isMobile || isDesktop ? 75 : 50} 
               />
             </a>
@@ -86,6 +86,19 @@ const NavBar = () => {
                 </a>
               </Link>
             ))}
+            {session ? (
+              <Button color="inherit" onClick={handleLogout} sx={{ color: '#FFFFFF' }}>
+                Logga Ut
+              </Button>
+            ) : (
+              <Link href="/login" passHref legacyBehavior>
+                <a>
+                  <Button color="inherit" sx={{ color: '#FFFFFF' }}>
+                    Logga In
+                  </Button>
+                </a>
+              </Link>
+            )}
           </Box>
         ) : (
           <>
@@ -97,7 +110,7 @@ const NavBar = () => {
                 transition: 'transform 0.3s',
                 transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                 color: 'white',
-                fontSize: '2.5rem', // Increase the size of the icon
+                fontSize: '2.5rem',
               }}
             >
               {isOpen ? <CloseIcon /> : <MenuIcon />}
@@ -117,11 +130,10 @@ const NavBar = () => {
               <Grid
                 container
                 direction="column"
-                justifyContent="center" // Changed to center content vertically
-                alignItems="center" // Keeps content centered horizontally
+                justifyContent="center"
+                alignItems="center"
                 sx={{ height: '100%', p: 3 }}
               >
-                {/* Pages List */}
                 <Box
                   sx={{ width: isMobile ? '100%' : 250 }}
                   role="presentation"
@@ -130,14 +142,14 @@ const NavBar = () => {
                 >
                   <List>
                     {pages.map((page, index) => (
-                      <ListItem key={index} sx={{ justifyContent: 'center' }}> {/* Centers each ListItem */}
+                      <ListItem key={index} sx={{ justifyContent: 'center' }}>
                         <Link href={page.path} passHref>
                           <Button
                             color="inherit"
                             sx={{
                               borderBottom: pathname === page.path ? '2px solid #FFEB3B' : 'none',
                               color: '#FFFFFF',
-                              fontSize: '1.25rem', // Increase font size here
+                              fontSize: '1.25rem',
                             }}
                           >
                             {page.name}
@@ -145,19 +157,29 @@ const NavBar = () => {
                         </Link>
                       </ListItem>
                     ))}
+                    {session ? (
+                      <ListItem sx={{ justifyContent: 'center' }}>
+                        <Button color="inherit" onClick={handleLogout} sx={{ color: '#FFFFFF', fontSize: '1.25rem' }}>
+                          Logga Ut
+                        </Button>
+                      </ListItem>
+                    ) : (
+                      <ListItem sx={{ justifyContent: 'center' }}>
+                        <Link href="/login" passHref>
+                          <Button color="inherit" sx={{ color: '#FFFFFF', fontSize: '1.25rem' }}>
+                            Logga In
+                          </Button>
+                        </Link>
+                      </ListItem>
+                    )}
                   </List>
-
-                  
-
-                  {/* Logo and Social Media Icons */}
-                  <Box sx={{ textAlign: 'center', mt: "0.5rem" }}> {/* Centers the logo and icons */}
+                  <Box sx={{ textAlign: 'center', mt: "0.5rem" }}>
                     <Image
                       alt="Kliv Idrottsförening"
                       src="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg"
                       width={150}
                       height={150}
                     />
-
                     <SocialMediaIcons />
                   </Box>
                 </Box>
