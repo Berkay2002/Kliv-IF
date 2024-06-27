@@ -1,3 +1,4 @@
+//navbaren som visas på alla sidor, innehåller länkar till alla sidor på hemsidan samt en länk till inloggningssidan
 "use client";
 
 import React, { useState, useEffect, useContext } from 'react';
