@@ -10,8 +10,11 @@ const nextConfig = {
     EMAIL_USER: process.env.EMAIL_USER,
     EMAIL_PASS: process.env.EMAIL_PASS,
     CONTACT_EMAIL: process.env.CONTACT_EMAIL,
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    AUTH0_ISSUER_BASE_URL: process.env.AUTH0_ISSUER_BASE_URL,
+    AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
+    AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET,
+    AUTH0_BASE_URL: process.env.AUTH0_BASE_URL,
+
   },
 };
 
