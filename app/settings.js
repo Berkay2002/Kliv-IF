@@ -2,14 +2,14 @@
 'use client';
 
 import React from 'react';
-import { Container, TextField, FormControlLabel, Checkbox, Button, Typography, Divider, Grid } from '@mui/material';
+import { Container, TextField, FormControlLabel, Checkbox, Button, Typography, Divider } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { getSession, useSession, signOut } from 'next-auth/react';
+import { useUser, getSession, withPageAuthRequired } from '@auth0/nextjs-auth0';
 import { useRouter } from 'next/navigation';
 
 const Settings = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { data: session } = useSession();
+  const { user } = useUser();
   const router = useRouter();
 
   const onSubmit = async (data) => {
@@ -36,12 +36,16 @@ const Settings = () => {
 
       if (response.ok) {
         alert('Account deleted successfully');
-        signOut();
+        window.location.href = '/api/auth/logout';
       } else {
         alert('Failed to delete account');
       }
     }
   };
+
+  if (!user) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Container>
@@ -52,7 +56,7 @@ const Settings = () => {
         <TextField
           fullWidth
           label="Name"
-          defaultValue={session?.user?.name}
+          defaultValue={user.name}
           {...register('name')}
           margin="normal"
         />
@@ -60,14 +64,14 @@ const Settings = () => {
           fullWidth
           label="Email"
           type="email"
-          defaultValue={session?.user?.email}
+          defaultValue={user.email}
           {...register('email')}
           margin="normal"
         />
         <TextField
           fullWidth
           label="Phone"
-          defaultValue={session?.user?.phone}
+          defaultValue={user.phone}
           {...register('phone')}
           margin="normal"
         />
@@ -79,15 +83,15 @@ const Settings = () => {
           margin="normal"
         />
         <FormControlLabel
-          control={<Checkbox {...register('newsletter')} defaultChecked={session?.user?.newsletter} />}
+          control={<Checkbox {...register('newsletter')} defaultChecked={user.newsletter} />}
           label="Subscribe to newsletter"
         />
         <FormControlLabel
-          control={<Checkbox {...register('notifications.email')} defaultChecked={session?.user?.notifications?.email} />}
+          control={<Checkbox {...register('notifications.email')} defaultChecked={user.notifications?.email} />}
           label="Email Notifications"
         />
         <FormControlLabel
-          control={<Checkbox {...register('notifications.sms')} defaultChecked={session?.user?.notifications?.sms} />}
+          control={<Checkbox {...register('notifications.sms')} defaultChecked={user.notifications?.sms} />}
           label="SMS Notifications"
         />
         <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 3 }}>
@@ -102,19 +106,6 @@ const Settings = () => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: { session },
-  };
-}
+export const getServerSideProps = withPageAuthRequired();
 
 export default Settings;

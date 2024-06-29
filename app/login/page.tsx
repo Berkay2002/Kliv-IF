@@ -1,69 +1,21 @@
-'use client';
+// app/login/page.tsx
+import React from 'react';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import Link from 'next/link';
 
-import React, { useEffect } from 'react';
-import { Container, Grid, Typography, Button, TextField, Divider } from '@mui/material';
-import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
-import { signIn } from 'next-auth/react';
+const LoginPage = () => {
+  const { user, error, isLoading } = useUser();
 
-const Login = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const router = useRouter();
-
-  useEffect(() => {
-    // Ensure useRouter is called only on client-side
-    if (!router) return;
-  }, [router]);
-
-  const onSubmit = async (data: any) => {
-    const result = await signIn('credentials', {
-      redirect: false,
-      email: data.email,
-      password: data.password,
-    });
-
-    if (result?.error) {
-      alert('Invalid email or password');
-    } else {
-      alert('Login successful');
-      router.push('/');
-    }
-  };
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+  if (user) return <div>You are already logged in</div>;
 
   return (
-    <Container sx={{ mt: 6, backgroundColor: '#ffffff', py: 8, maxWidth: 'lg' }}>
-      <Typography variant="h4" align="center" gutterBottom sx={{ marginBottom: '20px' }}>
-        Logga In
-      </Typography>
-      <Grid container spacing={4} justifyContent="center">
-        <Grid item xs={12} md={5}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <TextField
-              fullWidth
-              label="E-post"
-              type="email"
-              {...register('email', { required: 'E-post är obligatoriskt', pattern: { value: /^\S+@\S+$/i, message: 'Ogiltig e-postadress' } })}
-              margin="normal"
-              error={!!errors.email}
-              helperText={errors.email ? String(errors.email.message) : ''}
-            />
-            <TextField
-              fullWidth
-              label="Lösenord"
-              type="password"
-              {...register('password', { required: 'Lösenord är obligatoriskt' })}
-              margin="normal"
-              error={!!errors.password}
-              helperText={errors.password ? String(errors.password.message) : ''}
-            />
-            <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 3 }}>
-              Logga In
-            </Button>
-          </form>
-        </Grid>
-      </Grid>
-    </Container>
+    <div>
+      <h1>Login</h1>
+      <Link href="/api/auth/login">Login with Auth0</Link>
+    </div>
   );
 };
 
-export default Login;
+export default LoginPage;
