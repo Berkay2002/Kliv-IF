@@ -33,7 +33,7 @@ const BliMedlem = () => {
 
   return (
     <>
-      <Header title="BLI MEDLEM" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
+      <Header title='BLI MEDLEM' backgroundImageDesktop='/videos/KlivMontage720p.mp4' backgroundImageMobile='/videos/video1.mp4' />
       <Divider sx={{ my: 6 }} />
       <Container sx={{ backgroundColor: '#ffffff', py: 8, maxWidth: 'lg' }}>
         <Typography variant="h4" align="center" gutterBottom sx={{ marginBottom: '20px' }}>

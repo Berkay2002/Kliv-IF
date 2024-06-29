@@ -40,7 +40,7 @@ const Kontakt = () => {
 
   return (
     <>
-      <Header title="KONTAKTA OSS" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
+      <Header title='KONTAKTA OSS' backgroundImageDesktop='/videos/KlivMontage720p.mp4' backgroundImageMobile='/videos/video1.mp4' />
       <Divider sx={{ my: 6 }} />
       <Container className="kontakta-oss" sx={{ backgroundColor: '#ffffff', py: 8, maxWidth: 'lg' }}>
         <Typography variant="h4" align="center" gutterBottom sx={{ marginBottom: '20px' }}>

@@ -1,8 +1,7 @@
-//navbaren som visas på alla sidor, innehåller länkar till alla sidor på hemsidan samt en länk till inloggningssidan
-"use client";
+'use client';
 
 import React, { useState, useEffect, useContext } from 'react';
-import { AppBar, Toolbar, Button, Box, Drawer, IconButton, List, ListItem, Grid } from '@mui/material';
+import { ListItem, List, Grid, Drawer, AppBar, Toolbar, Button, Box, IconButton } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -10,16 +9,14 @@ import { MobileStateContext } from './MobileContext';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SocialMediaIcons from './SocialMediaIcons';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { useUser } from '@auth0/nextjs-auth0/client';
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
   const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext);
   const pathname = usePathname();
-  const { data: session } = useSession();
-
-  
+  const { user, error, isLoading } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,10 +28,6 @@ const NavBar = () => {
     };
   }, []);
 
-  const handleLogout = () => {
-    signOut();
-  };
-
   const pages = [
     { name: 'HEM', path: '/' },
     { name: 'OM OSS', path: '/sektionen' },
@@ -45,6 +38,10 @@ const NavBar = () => {
     { name: 'KONTAKTA OSS', path: '/kontakta-oss' },
   ];
 
+  const specialPages = ['/change-password', '/delete-account'];
+
+  const isSpecialPage = specialPages.includes(pathname ?? '');
+
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
       return;
@@ -53,24 +50,23 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar 
-      position="fixed" 
-      color="transparent" 
-      sx={{ 
-        backgroundColor: scroll ? 'rgba(0, 0, 0, 0.8)' : 'transparent', 
+    <AppBar
+      position="fixed"
+      sx={{
+        backgroundColor: isSpecialPage ? 'rgba(0, 0, 0, 0.8)' : (scroll ? 'rgba(0, 0, 0, 0.8)' : 'transparent'),
         transition: 'background-color 0.3s',
-        width: '100%'
+        width: '100%',
       }}
-    >      
+    >
       <Toolbar>
         <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
           <Link href="/" passHref legacyBehavior>
             <a>
-              <Image 
-                src="/logo/transparant.svg" 
-                alt="Alby Rådet" 
+              <Image
+                src="/logo/transparant.svg"
+                alt="Alby Rådet"
                 width={isMobile || isDesktop ? 75 : 50}
-                height={isMobile || isDesktop ? 75 : 50} 
+                height={isMobile || isDesktop ? 75 : 50}
               />
             </a>
           </Link>
@@ -89,15 +85,20 @@ const NavBar = () => {
                 </a>
               </Link>
             ))}
-            {session ? (
-              <Button color="inherit" onClick={handleLogout} sx={{ color: '#FFFFFF' }}>
-                Logga Ut
-              </Button>
-            ) : (
-              <Link href="/login" passHref legacyBehavior>
+            {!isLoading && !user && (
+              <Link href="/api/auth/login" passHref legacyBehavior>
                 <a>
                   <Button color="inherit" sx={{ color: '#FFFFFF' }}>
-                    Logga In
+                    Log in
+                  </Button>
+                </a>
+              </Link>
+            )}
+            {!isLoading && user && (
+              <Link href="/api/auth/logout" passHref legacyBehavior>
+                <a>
+                  <Button color="inherit" sx={{ color: '#FFFFFF' }}>
+                    Log out
                   </Button>
                 </a>
               </Link>
@@ -105,6 +106,26 @@ const NavBar = () => {
           </Box>
         ) : (
           <>
+            <IconButton color="inherit" sx={{ marginRight: '8px' }}>
+              {!isLoading && user && (
+                <Link href="/api/auth/logout" passHref legacyBehavior>
+                  <a>
+                    <Button color="inherit" sx={{ color: '#FFFFFF' }}>
+                      Log out
+                    </Button>
+                  </a>
+                </Link>
+              )}
+              {!isLoading && !user && (
+                <Link href="/api/auth/login" passHref legacyBehavior>
+                  <a>
+                    <Button color="inherit" sx={{ color: '#FFFFFF' }}>
+                      Log in
+                    </Button>
+                  </a>
+                </Link>
+              )}
+            </IconButton>
             <IconButton
               color="inherit"
               edge="end"
@@ -145,14 +166,14 @@ const NavBar = () => {
                 >
                   <List>
                     {pages.map((page, index) => (
-                      <ListItem key={index} sx={{ justifyContent: 'center', marginBottom: '-2%' /* Adjust this value as needed */ }}>
+                      <ListItem key={index} sx={{ justifyContent: 'center' }}>
                         <Link href={page.path} passHref>
                           <Button
                             color="inherit"
                             sx={{
                               borderBottom: pathname === page.path ? '2px solid #FFEB3B' : 'none',
                               color: '#FFFFFF',
-                              fontSize: '1.2rem',
+                              fontSize: '1.25rem',
                             }}
                           >
                             {page.name}
@@ -160,21 +181,6 @@ const NavBar = () => {
                         </Link>
                       </ListItem>
                     ))}
-                    {session ? (
-                      <ListItem sx={{ justifyContent: 'center' }}>
-                        <Button color="inherit" onClick={handleLogout} sx={{ color: '#FFFFFF', fontSize: '1rem' }}>
-                          Logga Ut
-                        </Button>
-                      </ListItem>
-                    ) : (
-                      <ListItem sx={{ justifyContent: 'center' }}>
-                        <Link href="/login" passHref>
-                          <Button color="inherit" sx={{ color: '#FFFFFF', fontSize: '1.2rem' }}>
-                            Logga In
-                          </Button>
-                        </Link>
-                      </ListItem>
-                    )}
                   </List>
                   <Box sx={{ textAlign: 'center', mt: "0.5rem" }}>
                     <Image

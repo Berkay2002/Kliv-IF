@@ -8,19 +8,17 @@ import NavBar from './navbar';
 import MuiProvider from './MuiProvider';
 import Footer from './Footer';
 import { MobileStateProvider } from './MobileContext';
-import { SessionProvider } from 'next-auth/react';
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout({ children }: {
   children: React.ReactNode;
 }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SessionProvider>
+        <UserProvider>
           <MuiProvider>
             <MobileStateProvider> 
               <>
@@ -30,7 +28,7 @@ export default function RootLayout({
               </>
             </MobileStateProvider>
           </MuiProvider>
-        </SessionProvider>
+        </UserProvider>
       </body>
     </html>
   );

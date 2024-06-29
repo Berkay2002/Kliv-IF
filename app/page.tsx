@@ -14,12 +14,7 @@ const Home = () => {
       <Divider sx={{ my: 6 }} />
 
       <Container>
-        
-
-
-        {/* News */}
-        
-        <News />
+    
 
         {/* Other sections of the homepage */}
       </Container>
