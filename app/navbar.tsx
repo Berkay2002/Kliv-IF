@@ -84,7 +84,7 @@ const NavBar = () => {
             ))}
             {!user && (
               <>
-                <Link href="/api/auth/signup" passHref legacyBehavior>
+                <Link href="/api/auth/login" passHref legacyBehavior>
                   <a>
                     <Button
                       variant="contained"
