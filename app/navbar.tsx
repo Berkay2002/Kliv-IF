@@ -1,4 +1,5 @@
-'use client';
+// NavBar.tsx
+"use client";
 
 import React, { useState, useEffect, useContext } from 'react';
 import { ListItem, List, Grid, Drawer, AppBar, Toolbar, Button, Box, IconButton } from '@mui/material';
@@ -10,13 +11,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SocialMediaIcons from './SocialMediaIcons';
 import { useUser } from '@auth0/nextjs-auth0/client';
+import ProfileMenu from './ProfileMenu';
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
   const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext);
   const pathname = usePathname();
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,13 +36,8 @@ const NavBar = () => {
     { name: 'LOVAKTIVITETER', path: '/lovaktiviteter' },
     { name: 'SPORTSTRUCK', path: '/sportstruck' },
     { name: 'JUDO', path: '/judo' },
-    { name: 'BLI MEDLEM', path: '/bli-medlem' },
     { name: 'KONTAKTA OSS', path: '/kontakta-oss' },
   ];
-
-  const specialPages = ['/change-password', '/delete-account'];
-
-  const isSpecialPage = specialPages.includes(pathname ?? '');
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
@@ -53,9 +50,9 @@ const NavBar = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: isSpecialPage ? 'rgba(0, 0, 0, 0.8)' : (scroll ? 'rgba(0, 0, 0, 0.8)' : 'transparent'),
+        backgroundColor: scroll ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
         transition: 'background-color 0.3s',
-        width: '100%',
+        width: '100%'
       }}
     >
       <Toolbar>
@@ -72,7 +69,7 @@ const NavBar = () => {
           </Link>
         </Box>
         {isDesktop ? (
-          <Box sx={{ display: 'flex', gap: 2 }}>
+          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
             {pages.map((page) => (
               <Link href={page.path} key={page.name} passHref legacyBehavior>
                 <a>
@@ -85,46 +82,49 @@ const NavBar = () => {
                 </a>
               </Link>
             ))}
-            {!isLoading && !user && (
-              <Link href="/api/auth/login" passHref legacyBehavior>
-                <a>
-                  <Button color="inherit" sx={{ color: '#FFFFFF' }}>
-                    Log in
-                  </Button>
-                </a>
-              </Link>
+            {!user && (
+              <>
+                <Link href="/api/auth/signup" passHref legacyBehavior>
+                  <a>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        backgroundColor: '#FFD700',
+                        color: '#000000',
+                        '&:hover': {
+                          backgroundColor: '#FFC107',
+                        },
+                      }}
+                    >
+                      BLI MEDLEM
+                    </Button>
+                  </a>
+                </Link>
+                <Link href="/api/auth/login" passHref legacyBehavior>
+                  <a>
+                    <Button
+                      variant="outlined"
+                      sx={{
+                        borderColor: '#FFD700',
+                        color: '#FFD700',
+                        '&:hover': {
+                          borderColor: '#FFC107',
+                          color: '#FFC107',
+                        },
+                      }}
+                    >
+                      Logga in
+                    </Button>
+                  </a>
+                </Link>
+              </>
             )}
-            {!isLoading && user && (
-              <Link href="/api/auth/logout" passHref legacyBehavior>
-                <a>
-                  <Button color="inherit" sx={{ color: '#FFFFFF' }}>
-                    Log out
-                  </Button>
-                </a>
-              </Link>
-            )}
+            {user && <ProfileMenu />}
           </Box>
         ) : (
           <>
             <IconButton color="inherit" sx={{ marginRight: '8px' }}>
-              {!isLoading && user && (
-                <Link href="/api/auth/logout" passHref legacyBehavior>
-                  <a>
-                    <Button color="inherit" sx={{ color: '#FFFFFF' }}>
-                      Log out
-                    </Button>
-                  </a>
-                </Link>
-              )}
-              {!isLoading && !user && (
-                <Link href="/api/auth/login" passHref legacyBehavior>
-                  <a>
-                    <Button color="inherit" sx={{ color: '#FFFFFF' }}>
-                      Log in
-                    </Button>
-                  </a>
-                </Link>
-              )}
+              {user ? <ProfileMenu /> : null}
             </IconButton>
             <IconButton
               color="inherit"
@@ -181,6 +181,51 @@ const NavBar = () => {
                         </Link>
                       </ListItem>
                     ))}
+                    {!user && (
+                      <>
+                        <ListItem sx={{ justifyContent: 'center' }}>
+                          <Link href="/api/auth/login" passHref>
+                            <Button
+                              variant="outlined"
+                              sx={{
+                                borderColor: '#FFD700',
+                                color: '#FFD700',
+                                fontSize: '1.25rem',
+                                '&:hover': {
+                                  borderColor: '#FFC107',
+                                  color: '#FFC107',
+                                },
+                              }}
+                            >
+                              Logga in
+                            </Button>
+                          </Link>
+                        </ListItem>
+                        <ListItem sx={{ justifyContent: 'center' }}>
+                          <Link href="/api/auth/signup" passHref>
+                            <Button
+                              variant="contained"
+                              sx={{
+                                backgroundColor: '#FFD700',
+                                color: '#000000',
+                                fontSize: '1.25rem',
+                                '&:hover': {
+                                  backgroundColor: '#FFC107',
+                                },
+                              }}
+                            >
+                              BLI MEDLEM
+                            </Button>
+                          </Link>
+                        </ListItem>
+                        
+                      </>
+                    )}
+                    {user && (
+                      <ListItem sx={{ justifyContent: 'center' }}>
+                        <ProfileMenu />
+                      </ListItem>
+                    )}
                   </List>
                   <Box sx={{ textAlign: 'center', mt: "0.5rem" }}>
                     <Image

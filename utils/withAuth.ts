@@ -1,7 +1,7 @@
-import auth0 from './auth0';
+import { getSession } from '@auth0/nextjs-auth0';
 
-const withAuth = (fn) => async (context) => {
-  const session = await auth0.getSession(context.req);
+const withAuth = (fn: any) => async (context: any) => {
+  const session = await getSession(context.req, context.res);
 
   if (!session || !session.user) {
     context.res.writeHead(302, {

@@ -1,21 +1,15 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Menu, MenuItem, IconButton, Typography, Divider, Modal, Box, useMediaQuery } from '@mui/material';
-import SettingsIcon from '@mui/icons-material/Settings';
-import DeleteIcon from '@mui/icons-material/Delete';
-import LockIcon from '@mui/icons-material/Lock';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { useUser } from '@auth0/nextjs-auth0/client';
+import { Menu, MenuItem, IconButton, Typography, Avatar, Box, Divider, Modal, Button, useMediaQuery } from '@mui/material';
+import { Settings, ExitToApp } from '@mui/icons-material';
 import { useTheme } from '@mui/material/styles';
-import { useUser, withPageAuthRequired } from '@auth0/nextjs-auth0/client';
-import Switch from '@mui/material/Switch';
+import Link from 'next/link';
 
 const ProfileMenu: React.FC = () => {
-  const { user } = useUser();
+  const { user, error, isLoading } = useUser();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [newsletterMail, setNewsletterMail] = useState(false);
-  const [newsletterSMS, setNewsletterSMS] = useState(false);
   const [modalOpen, setModalOpen] = React.useState(false);
   const open = Boolean(anchorEl);
   const theme = useTheme();
@@ -34,7 +28,7 @@ const ProfileMenu: React.FC = () => {
     setModalOpen(false);
   };
 
-  const handleSignOut = () => {
+  const handleLogout = () => {
     window.location.href = '/api/auth/logout';
     handleClose();
   };
@@ -42,56 +36,46 @@ const ProfileMenu: React.FC = () => {
   const renderMenuItems = () => (
     <>
       <MenuItem disabled>
-        <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
-          Inställningar
-        </Typography>
-      </MenuItem>
-      <MenuItem>
-        <DeleteIcon />
-        <Typography variant="body1" style={{ marginLeft: '10px' }}>
-          Radera konto
-        </Typography>
-      </MenuItem>
-      <MenuItem>
-        <LockIcon />
-        <Typography variant="body1" style={{ marginLeft: '10px' }}>
-          Byt lösenord
-        </Typography>
+        <Box display="flex" alignItems="center">
+          <Avatar src={user?.picture || ''} alt={user?.name || ''} />
+          <Box ml={2}>
+            <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
+              {user?.name}
+            </Typography>
+            <Typography variant="body2">{user?.email}</Typography>
+          </Box>
+        </Box>
       </MenuItem>
       <Divider />
-      <MenuItem disabled>
-        <Typography variant="subtitle1" style={{ fontWeight: 'bold' }}>
-          Nyhetsbrev
-        </Typography>
-      </MenuItem>
       <MenuItem>
-        <NotificationsIcon />
-        <Typography variant="body1" style={{ marginLeft: '10px' }}>
-          Mail
-        </Typography>
-        <Switch edge="end" />
-      </MenuItem>
-      <MenuItem>
-        <NotificationsIcon />
-        <Typography variant="body1" style={{ marginLeft: '10px' }}>
-          SMS
-        </Typography>
-        <Switch edge="end" />
+        <Link href="/settings" passHref>
+          <Box display="flex" alignItems="center">
+            <Settings />
+            <Typography variant="body1" style={{ marginLeft: '10px' }}>
+              Inställningar
+            </Typography>
+          </Box>
+        </Link>
       </MenuItem>
       <Divider />
-      <MenuItem onClick={handleSignOut}>
-        <ExitToAppIcon />
-        <Typography variant="body1" style={{ marginLeft: '10px', color: 'black' }}>
-          Logga ut
-        </Typography>
+      <MenuItem onClick={handleLogout}>
+        <Box display="flex" alignItems="center">
+          <ExitToApp />
+          <Typography variant="body1" style={{ marginLeft: '10px', color: 'black' }}>
+            Logga ut
+          </Typography>
+        </Box>
       </MenuItem>
     </>
   );
 
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+
   return (
     <>
       <IconButton onClick={handleClick} color="inherit">
-        <SettingsIcon style={{ color: 'white' }} />
+        <Avatar src={user?.picture || ''} alt={user?.name || ''} />
       </IconButton>
       {!isMobileOrTablet ? (
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
@@ -120,4 +104,4 @@ const ProfileMenu: React.FC = () => {
   );
 };
 
-export default withPageAuthRequired(ProfileMenu);
+export default ProfileMenu;
