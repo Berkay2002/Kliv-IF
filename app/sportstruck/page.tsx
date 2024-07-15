@@ -6,7 +6,7 @@ import Header from '../header';
 const Sportstruck = () => {
   return (
     <>
-      <Header title="SPORTSTRUCK" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
+      <Header title='SPORTSTRUCK' backgroundImageDesktop='/sportstruck/sportstruck1.png' backgroundImageMobile='/videos/video1.mp4' />
       <Container>
 
       </Container>

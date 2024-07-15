@@ -67,8 +67,8 @@ const Footer = () => {
         </Typography>
         <Typography color="white" align={isMobile ? 'center' : 'left'}>
           Kliv Idrottsförening <br />
-          Norra Botkyrka <br />
-          145 75 Norsborg <br />
+          Tomtbergavägen 370A <br />
+          145 71 Norsborg <br />
           info@kliv.se
         </Typography>
         <br />

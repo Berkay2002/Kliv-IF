@@ -1,4 +1,3 @@
-// NavBar.tsx
 "use client";
 
 import React, { useState, useEffect, useContext } from 'react';
@@ -10,15 +9,12 @@ import { MobileStateContext } from './MobileContext';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SocialMediaIcons from './SocialMediaIcons';
-import { useUser } from '@auth0/nextjs-auth0/client';
-import ProfileMenu from './ProfileMenu';
 
 const NavBar = () => {
   const [isOpen, setOpen] = useState(false);
   const [scroll, setScroll] = useState(false);
   const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext);
   const pathname = usePathname();
-  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,50 +78,9 @@ const NavBar = () => {
                 </a>
               </Link>
             ))}
-            {!user && (
-              <>
-                <Link href="/api/auth/login" passHref legacyBehavior>
-                  <a>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        backgroundColor: '#FFD700',
-                        color: '#000000',
-                        '&:hover': {
-                          backgroundColor: '#FFC107',
-                        },
-                      }}
-                    >
-                      BLI MEDLEM
-                    </Button>
-                  </a>
-                </Link>
-                <Link href="/api/auth/login" passHref legacyBehavior>
-                  <a>
-                    <Button
-                      variant="outlined"
-                      sx={{
-                        borderColor: '#FFD700',
-                        color: '#FFD700',
-                        '&:hover': {
-                          borderColor: '#FFC107',
-                          color: '#FFC107',
-                        },
-                      }}
-                    >
-                      Logga in
-                    </Button>
-                  </a>
-                </Link>
-              </>
-            )}
-            {user && <ProfileMenu />}
           </Box>
         ) : (
           <>
-            <IconButton color="inherit" sx={{ marginRight: '8px' }}>
-              {user ? <ProfileMenu /> : null}
-            </IconButton>
             <IconButton
               color="inherit"
               edge="end"
@@ -181,51 +136,6 @@ const NavBar = () => {
                         </Link>
                       </ListItem>
                     ))}
-                    {!user && (
-                      <>
-                        <ListItem sx={{ justifyContent: 'center' }}>
-                          <Link href="/api/auth/login" passHref>
-                            <Button
-                              variant="outlined"
-                              sx={{
-                                borderColor: '#FFD700',
-                                color: '#FFD700',
-                                fontSize: '1.25rem',
-                                '&:hover': {
-                                  borderColor: '#FFC107',
-                                  color: '#FFC107',
-                                },
-                              }}
-                            >
-                              Logga in
-                            </Button>
-                          </Link>
-                        </ListItem>
-                        <ListItem sx={{ justifyContent: 'center' }}>
-                          <Link href="/api/auth/signup" passHref>
-                            <Button
-                              variant="contained"
-                              sx={{
-                                backgroundColor: '#FFD700',
-                                color: '#000000',
-                                fontSize: '1.25rem',
-                                '&:hover': {
-                                  backgroundColor: '#FFC107',
-                                },
-                              }}
-                            >
-                              BLI MEDLEM
-                            </Button>
-                          </Link>
-                        </ListItem>
-                        
-                      </>
-                    )}
-                    {user && (
-                      <ListItem sx={{ justifyContent: 'center' }}>
-                        <ProfileMenu />
-                      </ListItem>
-                    )}
                   </List>
                   <Box sx={{ textAlign: 'center', mt: "0.5rem" }}>
                     <Image
