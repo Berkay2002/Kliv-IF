@@ -46,6 +46,12 @@ const members = [
 // You can add or remove members here by modifying this array
 
 const Home = () => {
+  const imageStyle = {
+    borderRadius: '15px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  };
+
+
   return (
     <>
       {/* Header component displaying the logo and background video */}
@@ -65,9 +71,8 @@ const Home = () => {
 
         </Box>
 
-        <Grid container spacing={4} justifyContent="center" sx={{ mb: 6 }}>
-          {/* Information grid for different sections */}
-          <Grid item xs={12} sm={6} md={4}>
+        <Grid container spacing={4} justifyContent="center" alignItems="center" sx={{ mb: 6 }}>
+          <Grid item xs={12} sm={6} md={6}>
             <Box textAlign="center">
               <Typography variant="h5" gutterBottom>
                 Kliv styrs av unga för unga
@@ -77,16 +82,40 @@ const Home = () => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={6}>
+            <Image src="/lovaktiviteter/lovaktiviteter3.png" 
+            alt="Description" 
+            width={500} 
+            height={300} 
+            layout="responsive" 
+            style={imageStyle} />
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={4} justifyContent="center" alignItems="center" sx={{ mb: 6 }}>
+          <Grid item xs={12} sm={6} md={6}>
+            <Image 
+            src="/sportstruck/sportstruck2.png" 
+            alt="Description" 
+            width={500} 
+            height={300} 
+            layout="responsive" 
+            style={imageStyle} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
             <Box textAlign="center">
               <Typography variant="h5" gutterBottom>
                 Tryggt och kostnadsfritt
               </Typography>
               <Typography variant="body1">
-                Våra kostnadsfria <Link href="/lovaktiviteter"><span style={{ color: 'black', fontWeight: 'bold' }}>lovaktiviteter</span></Link> fungerar även som en trygg plats för barn i området att vända sig till under loven. Lovaktiviteterna är alltid kravlösa, kostnadsfria och bemannade med utbildade idrottsledare.              </Typography>
+                Våra kostnadsfria <Link href="/lovaktiviteter"><span style={{ color: 'black', fontWeight: 'bold' }}>lovaktiviteter</span></Link> fungerar även som en trygg plats för barn i området att vända sig till under loven. Lovaktiviteterna är alltid kravlösa, kostnadsfria och bemannade med utbildade idrottsledare.
+              </Typography>
             </Box>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+        </Grid>
+
+        <Grid container spacing={4} justifyContent="center" alignItems="center" sx={{ mb: 6 }}>
+          <Grid item xs={12} sm={6} md={6}>
             <Box textAlign="center">
               <Typography variant="h5" gutterBottom>
                 Hjälpa barn att hitta sin idrott
@@ -95,6 +124,14 @@ const Home = () => {
                 För många barn blir det första gången de testar en ny idrott. Genom samarbete med lokala idrottsföreningar hjälper vi föreningarna att introducera sina verksamheter för barn och deras föräldrar. Så möjliggör vi för barn i området att kliva in i idrottens värld.
               </Typography>
             </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <Image src="/lovaktiviteter/lovaktiviteter2.png" 
+              alt="Description" 
+              width={500} 
+              height={300} 
+              layout="responsive" 
+              style={imageStyle} />
           </Grid>
         </Grid>
 

@@ -76,7 +76,7 @@ const Kontakt = () => {
     <>
       <Header title='KONTAKTA OSS' backgroundImageDesktop='/videos/KlivMontage720p.mp4' backgroundImageMobile='/videos/video1.mp4' />
       <Container className="kontakta-oss" sx={{ backgroundColor: '#ffffff', py: 8, maxWidth: 'lg' }}>
-        <Typography variant="h4" align="center" gutterBottom sx={{ marginBottom: '20px' }}>
+        <Typography variant="h2" align="center" gutterBottom>
           Kontakta oss
         </Typography>
         <Grid container spacing={4} justifyContent="center">
