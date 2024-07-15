@@ -8,6 +8,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import Image from 'next/image';
 import { MobileStateContext } from './MobileContext';
 
+// Array containing link content for the footer
 const linksContent = [
   { title: 'Link 1', path: '#' },
   { title: 'Link 2', path: '#' },
@@ -32,12 +33,12 @@ const Footer = () => {
         justifyContent: 'center',
       }}
     >
-      {/* Add your logo here */}
+      {/* Logo Section */}
       <Grid item xs={12} md={4}>
         <Grid container justifyContent="center" alignItems="center">
           <Image src="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg" height={200} width={200} alt="Logo" />
           <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-            
+            {/* Facebook Link */}
             <Link
               target="_blank"
               rel="noopener"
@@ -47,6 +48,7 @@ const Footer = () => {
                 <FacebookRoundedIcon />
               </IconButton>
             </Link>
+            {/* Instagram Link */}
             <Link
               target="_blank"
               rel="noopener"
@@ -60,7 +62,7 @@ const Footer = () => {
         </Grid>
       </Grid>
 
-      {/* Add your contact information here */}
+      {/* Contact Information Section */}
       <Grid item xs={12} md={4}>
         <Typography variant="h4" color="white" align={isMobile ? 'center' : 'left'}>
           Kontakt
@@ -74,7 +76,7 @@ const Footer = () => {
         <br />
       </Grid>
 
-      {/* Add your links here */}
+      {/* Links Section */}
       <Grid item xs={12} md={4}>
         <Typography variant="h4" color="white" align={isMobile ? 'center' : 'left'}>
           Länkar
@@ -86,7 +88,7 @@ const Footer = () => {
         ))}
       </Grid>
 
-      {/* Add your social media links here */}
+      {/* Social Media Section */}
       <Grid
         item
         xs={12}

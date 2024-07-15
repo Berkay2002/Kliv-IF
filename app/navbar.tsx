@@ -1,5 +1,7 @@
-"use client";
+// app/NavBar.tsx
+'use client';
 
+// Importing necessary libraries and components
 import React, { useState, useEffect, useContext } from 'react';
 import { ListItem, List, Grid, Drawer, AppBar, Toolbar, Button, Box, IconButton } from '@mui/material';
 import Link from 'next/link';
@@ -10,12 +12,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import SocialMediaIcons from './SocialMediaIcons';
 
+// The main NavBar component
 const NavBar = () => {
-  const [isOpen, setOpen] = useState(false);
-  const [scroll, setScroll] = useState(false);
-  const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext);
-  const pathname = usePathname();
+  const [isOpen, setOpen] = useState(false); // State to manage the drawer's open/close state
+  const [scroll, setScroll] = useState(false); // State to manage the scroll position for background color change
+  const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext); // Context for device type
+  const pathname = usePathname(); // Get the current pathname
 
+  // Effect to handle scroll event for background color change
   useEffect(() => {
     const handleScroll = () => {
       setScroll(window.scrollY > 50);
@@ -26,15 +30,16 @@ const NavBar = () => {
     };
   }, []);
 
+  // Pages array for navigation links
   const pages = [
     { name: 'HEM', path: '/' },
-    { name: 'OM OSS', path: '/sektionen' },
     { name: 'LOVAKTIVITETER', path: '/lovaktiviteter' },
     { name: 'SPORTSTRUCK', path: '/sportstruck' },
     { name: 'JUDO', path: '/judo' },
     { name: 'KONTAKTA OSS', path: '/kontakta-oss' },
   ];
 
+  // Function to toggle the drawer's open/close state
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
       return;

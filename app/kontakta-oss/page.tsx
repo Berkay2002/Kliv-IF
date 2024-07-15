@@ -1,9 +1,43 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { Container, Grid, Typography, Button, TextField, Divider } from '@mui/material';
+import { Container, Grid, Typography, Button, TextField, Divider, Card, CardMedia, CardContent, Box, Link } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import Header from '../header';
+import Image from 'next/image';
+
+const members = [
+  {
+    name: 'Muhammet Tozak',
+    title: 'Ordförande',
+    email: 'muhammet@klivif.se',
+    image: '/sektionen/profile.jpg',
+  },
+  {
+    name: 'Maria Rafaelius',
+    title: 'Medlemsansvarig',
+    email: 'Maria@klivif.se',
+    image: '/sektionen/profile.jpg',
+  },
+  {
+    name: 'Eldar Ljuca',
+    title: 'Aktivitetsansvarig',
+    email: 'Eldar@klivif.se',
+    image: '/sektionen/profile.jpg',
+  },
+  {
+    name: 'Binel Elias',
+    title: 'PR-ansvarig',
+    email: 'Binel@klivif.se',
+    image: '/sektionen/profile.jpg',
+  },
+  {
+    name: 'Leah Aybar',
+    title: 'PR-ansvarig',
+    email: 'Leah@klivif.se',
+    image: '/sektionen/profile.jpg',
+  },
+];
 
 interface FormValues {
   name: string;
@@ -41,7 +75,6 @@ const Kontakt = () => {
   return (
     <>
       <Header title='KONTAKTA OSS' backgroundImageDesktop='/videos/KlivMontage720p.mp4' backgroundImageMobile='/videos/video1.mp4' />
-      <Divider sx={{ my: 6 }} />
       <Container className="kontakta-oss" sx={{ backgroundColor: '#ffffff', py: 8, maxWidth: 'lg' }}>
         <Typography variant="h4" align="center" gutterBottom sx={{ marginBottom: '20px' }}>
           Kontakta oss
@@ -90,6 +123,59 @@ const Kontakt = () => {
             </form>
           </Grid>
         </Grid>
+
+        <Divider sx={{ my: 6 }} />
+        {/* Divider to separate sections */}
+
+        <Typography variant="h2" align="center" gutterBottom>
+          STYRELSEN
+        </Typography>
+        <Typography variant="body1" align="center" gutterBottom sx={{ mb: 2 }}>
+          Hej! Här är styrelsen för Albyrådet. Om du har några frågor eller funderingar är du välkommen att kontakta oss.
+        </Typography>
+
+        <Box textAlign="center" mb={4}>
+          {/* Group image of the members */}
+          <Image
+            src="/sektionen/group-example.jpg"
+            alt="Gruppbild"
+            width={612}
+            height={392}
+            layout="intrinsic"
+            style={{ objectFit: 'cover' }}
+          />
+        </Box>
+
+        <Grid container spacing={2} justifyContent="center" sx={{ mb: 6 }}>
+          {/* Individual member cards */}
+          {members.map((member, index) => (
+            <Grid item key={index} xs={12} sm={6} md={4} lg={2.4}>
+              <Card>
+                <CardMedia>
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={250}
+                    height={312} // For 4:5 aspect ratio
+                    layout="responsive"
+                    style={{ objectFit: 'cover'}}
+                  />
+                </CardMedia>
+                <CardContent sx={{ textAlign: 'center' }}>
+                  <Typography variant="h6">{member.name}</Typography>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                    {member.title}
+                  </Typography>
+                  <Typography variant="body2" color="textPrimary">
+                    {member.email}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        <Divider sx={{ my: 6 }} />
+
       </Container>
     </>
   );
