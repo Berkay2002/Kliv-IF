@@ -86,8 +86,8 @@ const Home = () => {
             </Box>
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
-            <Image src="/lovaktiviteter/lovaktiviteter3.png" 
-            alt="Description" 
+            <Image src="/lovaktiviteter/ungaForUnga.jpg" 
+            alt="Unga för unga" 
             width={500} 
             height={300} 
             layout="responsive" 
@@ -98,7 +98,7 @@ const Home = () => {
         <Grid container spacing={4} justifyContent="center" alignItems="center" sx={{ mb: 6 }}>
           <Grid item xs={12} sm={6} md={6}>
             <Image 
-            src="/sportstruck/sportstruck2.png" 
+            src="/lovaktiviteter/hjalpaBarn.png" 
             alt="Description" 
             width={500} 
             height={300} 
