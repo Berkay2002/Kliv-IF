@@ -73,24 +73,29 @@ return (
         Lovaktiviteter
       </Typography>
       <Typography variant="body1" paragraph>
-        Under loven erbjuder vi en trygg plats för hundratals barn som får prova på ledarledda idrottsaktiviteter helt kostnadsfritt. För många barn blir det första gången som de får prova på en ny idrott. Genom att samarbeta med lokala idrottsföreningar hjälper vi föreningarna att introducera deras verksamheter för barn och deras föräldrar. På detta vis möjliggör vi för barn i området att kliva in i idrottens värld!
+        Under loven erbjuder vi en trygg plats för hundratals barn som får prova 
+        på ledarledda idrottsaktiviteter helt kostnadsfritt. För många barn blir 
+        det första gången som de får prova på en ny idrott. Genom att samarbeta med 
+        lokala idrottsföreningar hjälper vi föreningarna att introducera deras verksamheter 
+        för barn och deras föräldrar. På detta vis möjliggör vi för barn i området att kliva in i idrottens värld!
         Håll dig uppdaterad inför nästa lovaktivitet på våra sociala medier!
       </Typography>
-
-
 
       <Timeline position="alternate">
         {activities.map((event: any, index: number) => (
           <TimelineItem key={index}>
+            
             <TimelineOppositeContent>
-              <Typography variant="h6" color="textSecondary">
+              <Typography variant="h6" color="black">
                 {event.event}
               </Typography>
             </TimelineOppositeContent>
+
             <TimelineSeparator>
-              <TimelineDot />
-              {index < activities.length - 1 && <TimelineConnector />}
+                <TimelineDot sx={{ bgcolor: 'black' }} />
+                {index < activities.length - 1 && <TimelineConnector sx={{ bgcolor: 'black' }} />}
             </TimelineSeparator>
+
             <TimelineContent>
               <Card sx={{ mb: 4, maxWidth: 345, mx: 'auto' }}>
                 <CardMedia>
@@ -111,6 +116,7 @@ return (
                 </CardContent>
               </Card>
             </TimelineContent>
+
           </TimelineItem>
         ))}
       </Timeline>
