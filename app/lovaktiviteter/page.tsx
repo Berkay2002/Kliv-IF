@@ -6,7 +6,7 @@ import Header from '../header';
 const Lovaktiviteter = () => {
   return (
     <>
-      <Header title="LOVAKTIVITETER" backgroundImageDesktop='/sektionen/sektionenImage.jpeg' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
+      <Header title="LOVAKTIVITETER" backgroundImageDesktop='/sportstruck/sportstruck1.png' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
       <Container>
 
       </Container>

@@ -34,7 +34,6 @@ const NavBar = () => {
   const pages = [
     { name: 'HEM', path: '/' },
     { name: 'LOVAKTIVITETER', path: '/lovaktiviteter' },
-    { name: 'SPORTSTRUCK', path: '/sportstruck' },
     { name: 'JUDO', path: '/judo' },
     { name: 'KONTAKTA OSS', path: '/kontakta-oss' },
   ];
@@ -62,7 +61,7 @@ const NavBar = () => {
             <a>
               <Image
                 src="/logo/transparant.svg"
-                alt="Alby Rådet"
+                alt="Kliv Idrottsförening"
                 width={isMobile || isDesktop ? 75 : 50}
                 height={isMobile || isDesktop ? 75 : 50}
               />

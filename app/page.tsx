@@ -8,6 +8,7 @@ import React from 'react';
 import { Container, Grid, Typography, Card, CardMedia, CardContent, Box, Divider, Link } from '@mui/material';
 import Image from 'next/image';
 import Header from './header';
+import Lovaktiviteter from './lovaktiviteter/page';
 // Import necessary components and libraries
 
 // Array of member objects, each containing name, title, email, and image URL
@@ -59,22 +60,25 @@ const Home = () => {
 
       <Container sx={{ mt: -2 }}>
         {/* Container for the main content with some margin adjustment */}
-        <Box textAlign="center" mt={-5} mb={2}>
+        <Box textAlign="left" mt={-5} mb={2}>
           <Image src="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg" alt="Kliv Idrottsförening" width={150} height={150} />
         </Box>
 
         <Box mb={3} textAlign="center">
           {/* Section for "Vad är Kliv?" */}
-          <Typography variant="h2" gutterBottom>
-            Vad gör Kliv?
+          <Typography variant="h3" gutterBottom>
+            Om oss
+          </Typography>
+          <Typography variant="h6" gutterBottom>
+            Kliv är en modern idrottsförening som introducerar och uppmuntrar idrottande bland barn och ungdomar i Norra Botkyrka.
           </Typography>
 
         </Box>
 
         <Grid container spacing={4} justifyContent="center" alignItems="center" sx={{ mb: 6 }}>
           <Grid item xs={12} sm={6} md={6}>
-            <Box textAlign="center">
-              <Typography variant="h5" gutterBottom>
+            <Box textAlign="left">
+              <Typography variant="h4" gutterBottom>
                 Kliv styrs av unga för unga
               </Typography>
               <Typography variant="body1">
@@ -103,12 +107,17 @@ const Home = () => {
             style={imageStyle} />
           </Grid>
           <Grid item xs={12} sm={6} md={6}>
-            <Box textAlign="center">
-              <Typography variant="h5" gutterBottom>
-                Tryggt och kostnadsfritt
+            <Box textAlign="left">
+              <Typography variant="h4" gutterBottom>
+                Vi brinner för att hjälpa barn att hitta sin idrott
               </Typography>
               <Typography variant="body1">
-                Våra kostnadsfria <Link href="/lovaktiviteter"><span style={{ color: 'black', fontWeight: 'bold' }}>lovaktiviteter</span></Link> fungerar även som en trygg plats för barn i området att vända sig till under loven. Lovaktiviteterna är alltid kravlösa, kostnadsfria och bemannade med utbildade idrottsledare.
+                Under våra <Link href="/lovaktiviteter"><span 
+                style={{ 
+                  color: 'black', 
+                  fontWeight: 'bold' 
+                }}> Lovaktiviteter</span></Link> erbjuder vi många kostnadsfria och ledarledda idrottsaktiviteter för barn att prova på. För många barn blir det första gången som de får prova på en ny idrott. Genom att samarbeta med lokala idrottsföreningar hjälper vi föreningarna att introducera deras verksamheter för barn och deras föräldrar. 
+                På detta vis möjliggör vi för barn i området att kliva in i idrottens värld.
               </Typography>
             </Box>
           </Grid>
@@ -116,9 +125,9 @@ const Home = () => {
 
         <Grid container spacing={4} justifyContent="center" alignItems="center" sx={{ mb: 6 }}>
           <Grid item xs={12} sm={6} md={6}>
-            <Box textAlign="center">
-              <Typography variant="h5" gutterBottom>
-                Hjälpa barn att hitta sin idrott
+            <Box textAlign="left">
+              <Typography variant="h4" gutterBottom>
+                Vi erbjuder trygga och kostnadsfria aktiviteter för både barn och ungdomar
               </Typography>
               <Typography variant="body1">
                 För många barn blir det första gången de testar en ny idrott. Genom samarbete med lokala idrottsföreningar hjälper vi föreningarna att introducera sina verksamheter för barn och deras föräldrar. Så möjliggör vi för barn i området att kliva in i idrottens värld.
@@ -135,6 +144,30 @@ const Home = () => {
           </Grid>
         </Grid>
 
+        <Grid container spacing={4} direction="column" sx={{ mb: 6 }}>
+          <Grid item xs={12} sm={6} md={6}>
+            <Box textAlign="left" mb={4}>
+              <Typography variant="h4" gutterBottom>
+                Spontanidrott
+              </Typography>
+              <Typography variant="body1">
+              I nuläget väljer många barn och ungdomar att tidigt lämna idrotten på grund av krav som ställs av den traditionella förenings strukturen. 
+              På Kliv strävar vi efter att erbjuda spontanidrott för ungdomar - utan krav som träningsnärvaro och matcher under helger              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <Box textAlign="left" mb={4}>
+            <Typography variant="h4" gutterBottom>
+              Engagera dig genom att bli medlem!
+            </Typography>
+            <Typography variant="body1">
+              Vill du utöva ditt intresse inom idrott samtidigt som du gör någonting meningsfullt? Vill du hitta gemenskap med andra som brinner för samma sak som du? Bli medlem i Kliv idrottsförening! Hos oss får du möjligheten att engagera dig som ledare inom flera olika idrotter. Kontakta vår medlemsansvariga <Link href="mailto:Maria@klivif.se"><span style={{ color: 'black', fontWeight: 'bold' }}>Maria Rafaelius</span></Link> idag och kliv in i gemenskapen : )
+            </Typography>
+          </Box>
+          </Grid>
+        </Grid>
+
+   
         <Divider sx={{ my: 6 }} />
         {/* Divider to separate sections */}
 
