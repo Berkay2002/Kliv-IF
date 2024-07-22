@@ -131,7 +131,7 @@ const Kontakt = () => {
           STYRELSEN
         </Typography>
         <Typography variant="body1" align="center" gutterBottom sx={{ mb: 2 }}>
-          Hej! Här är styrelsen för Albyrådet. Om du har några frågor eller funderingar är du välkommen att kontakta oss.
+          Hej! Här är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att kontakta oss.
         </Typography>
 
         <Box textAlign="center" mb={4}>

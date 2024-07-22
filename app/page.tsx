@@ -8,7 +8,6 @@ import React from 'react';
 import { Container, Grid, Typography, Card, CardMedia, CardContent, Box, Divider, Link } from '@mui/material';
 import Image from 'next/image';
 import Header from './header';
-import Lovaktiviteter from './lovaktiviteter/page';
 // Import necessary components and libraries
 
 // Array of member objects, each containing name, title, email, and image URL
