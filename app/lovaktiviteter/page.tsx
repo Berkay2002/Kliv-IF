@@ -36,31 +36,31 @@ const activities = [
     event: 'Sportlov',
     title: 'Sportlovskul',
     description: 'Vår mobila idrottsplats som kommer till olika platser under loven och erbjuder en rad olika idrottsaktiviteter för barn och ungdomar.',
-    image: '/sportstruck/sportstruck1.png',
+    image: '/events/spring.jpg',
   },
   {
     event: 'Påsklov',
     title: 'Påsklovskul',
     description: 'Speciella aktiviteter under påsklovet med fokus på roliga och engagerande idrottsaktiviteter för alla åldrar.',
-    image: '/sportstruck/sportstruck1.png',
+    image: '/events/easter.webp',
   },
   {
     event: 'Sommarlov',
     title: 'Sportstruck & Sportoteket',
     description: 'Under sommarlovet erbjuder vi en rad olika idrottsaktiviteter för barn och ungdomar för att hålla dem aktiva och engagerade.',
-    image: '/sportstruck/sportstruck1.png',
+    image: '/events/summer.jpg',
   },
   {
     event: 'Höstlov',
     title: 'Höstlovskul',
     description: 'Höstlovet är fullt av spännande idrottsaktiviteter som är designade för att vara roliga och utmanande.',
-    image: '/sportstruck/sportstruck1.png',
+    image: '/events/autumn.jpg',
   },
   {
     event: 'Jullov',
     title: 'Jullovskul',
     description: 'Under jullovet arrangerar vi speciella aktiviteter som är inriktade på att fira högtiden genom idrott och gemenskap.',
-    image: '/sportstruck/sportstruck1.png',
+    image: '/events/winter.jpg',
   },
 ];
 
@@ -103,7 +103,7 @@ return (
                     src={event.image}
                     alt={event.title}
                     width={345}
-                    height={230} // Adjusted size for consistency
+                    height={230} // For consistent size
                     layout="responsive"
                     style={imageStyle}
                   />
