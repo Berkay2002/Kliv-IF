@@ -2,7 +2,7 @@
 'use client';
 
 // Importing necessary libraries and components
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import { ListItem, List, Grid, Drawer, AppBar, Toolbar, Button, Box, IconButton } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -18,17 +18,30 @@ const NavBar = () => {
   const [scroll, setScroll] = useState(false); // State to manage the scroll position for background color change
   const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext); // Context for device type
   const pathname = usePathname(); // Get the current pathname
+  const underlineRef = useRef(null);
+  const [underlineStyle, setUnderlineStyle] = useState({ width: 0, left: 0 });
 
-  // Effect to handle scroll event for background color change
-  useEffect(() => {
-    const handleScroll = () => {
-      setScroll(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+// Effect to handle scroll event for background color change
+useEffect(() => {
+  const handleScroll = () => {
+    setScroll(window.scrollY > 50);
+  };
+  window.addEventListener('scroll', handleScroll);
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
+
+// Effect to handle underline animation for active link
+useEffect(() => {
+  if (isDesktop && underlineRef.current) {
+    const activeButton = document.querySelector(`a[href="${pathname}"] button`);
+    if (activeButton) {
+      const { offsetWidth, offsetLeft } = activeButton as HTMLElement;
+      setUnderlineStyle({ width: offsetWidth, left: offsetLeft });
+    }
+  }
+}, [pathname, isDesktop]);
 
   // Pages array for navigation links
   const pages = [
@@ -50,7 +63,7 @@ const NavBar = () => {
     <AppBar
       position="fixed"
       sx={{
-        backgroundColor: scroll ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
+        backgroundColor: scroll ? 'rgba(0, 0, 0, 0.8)' : 'black',
         transition: 'background-color 0.3s',
         width: '100%'
       }}
@@ -69,19 +82,32 @@ const NavBar = () => {
           </Link>
         </Box>
         {isDesktop ? (
-          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+          <Box sx={{ display: 'flex', gap: 2, alignItems: 'center', position: 'relative' }}>
             {pages.map((page) => (
               <Link href={page.path} key={page.name} passHref legacyBehavior>
                 <a>
                   <Button
                     color="inherit"
-                    sx={{ borderBottom: pathname === page.path ? '2px solid #FFEB3B' : 'none', color: '#FFFFFF' }}
+                    sx={{
+                      color: '#FFFFFF',
+                    }}
                   >
                     {page.name}
                   </Button>
                 </a>
               </Link>
             ))}
+            <Box
+              ref={underlineRef}
+              sx={{
+                position: 'absolute',
+                bottom: 0,
+                height: '2px',
+                backgroundColor: '#FFFFFF',
+                transition: 'width 0.3s ease-in-out, left 0.3s ease-in-out',
+                ...underlineStyle,
+              }}
+            />
           </Box>
         ) : (
           <>

@@ -8,6 +8,8 @@ import React from 'react';
 import { Container, Grid, Typography, Card, CardMedia, CardContent, Box, Divider, Link } from '@mui/material';
 import Image from 'next/image';
 import Header from './header';
+import CustomWavyBackground from './headerWavyBackground';
+
 // Import necessary components and libraries
 
 // Array of member objects, each containing name, title, email, and image URL
@@ -64,10 +66,10 @@ const Home = () => {
         </Box>
 
         <Box mb={3} textAlign="center">
-          {/* Section for "Vad är Kliv?" */}
           <Typography variant="h3" gutterBottom>
             Om oss
           </Typography>
+          <Typography variant="h6" gutterBottom></Typography>
           <Typography variant="h6" gutterBottom>
             Kliv är en modern idrottsförening som introducerar och uppmuntrar idrottande bland barn och ungdomar i Norra Botkyrka.
           </Typography>
@@ -167,7 +169,8 @@ const Home = () => {
         </Grid>
 
    
-        <Divider sx={{ my: 6 }} />
+        <CustomWavyBackground  />
+
         {/* Divider to separate sections */}
 
         <Typography variant="h2" align="center" gutterBottom>

@@ -4,7 +4,7 @@
 import React, { useContext } from 'react';
 import { Box, Typography } from '@mui/material';
 import Image from 'next/image';
-import CustomWavyBackground from './CustomWavyBackground';
+import CustomWavyBackground from './headerWavyBackground';
 import { MobileStateContext } from './MobileContext';
 
 {/* The Header will be able to display a title and a background image or video for either desktop or mobile*/}

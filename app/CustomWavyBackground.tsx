@@ -1,23 +1,40 @@
-// app/CustomWavyBackground.tsx
 import React from 'react';
-import styles from './CustomWavyBackground.module.css';
+import { Box } from '@mui/material';
 
-const CustomWavyBackground = () => {
+const CustomWavyBackground = ({ children, backgroundColor }: { children: React.ReactNode; backgroundColor: string; }) => {
   return (
-    <div className={styles.wavyBackground}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-      >
-        <path
-          fill="#ffffff"
-          fillOpacity="1"
-          d="M0,128L80,154.7C160,181,320,235,480,245.3C640,256,800,224,960,218.7C1120,213,1280,235,1360,245.3L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
-        ></path>
-      </svg>
-    </div>
+    <Box sx={{ 
+      position: 'relative', 
+      width: '100%', 
+      backgroundColor, 
+      paddingTop: '50px', 
+      paddingBottom: '50px', 
+      '&:before': {
+        content: '""',
+        position: 'absolute',
+        top: '-50px',
+        left: 0,
+        right: 0,
+        height: '100px',
+        background: `url('/path-to-your-top-wave-image.svg') top center no-repeat`,
+        backgroundSize: 'cover',
+      },
+      '&:after': {
+        content: '""',
+        position: 'absolute',
+        bottom: '-50px',
+        left: 0,
+        right: 0,
+        height: '100px',
+        background: `url('/path-to-your-bottom-wave-image.svg') bottom center no-repeat`,
+        backgroundSize: 'cover',
+      },
+    }}>
+      <Box sx={{ position: 'relative', zIndex: 1 }}>
+        {children}
+      </Box>
+    </Box>
   );
 };
 
 export default CustomWavyBackground;
-
