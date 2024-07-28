@@ -83,12 +83,12 @@ const Judo = () => {
           <Container maxWidth={isMobile ? 'xl' : 'lg'}>
             <Grid container spacing={5} direction={isMobile ? 'column' : 'row'}>
               <Grid item xs={12} md={6}>
-                <HeaderText variant={isMobile ? "h3" : "h2"} gutterBottom sx={{ color: 'white' }}>
+                <HeaderText variant={isMobile ? "h4" : "h3"} gutterBottom sx={{ color: 'white' }}>
                   TRÄNINGSGRUPP OCH SCHEMA
                 </HeaderText>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Typography variant="h6" gutterBottom sx={{ color: 'white' }}>
+                <Typography variant={isMobile ? "body1" : "h6"} paragraph sx={{ color: 'white' }}>
                   Vi erbjuder för tillfället träningar för barn 7-12 år. Träningarna hålls på måndagar 17:30-19:30 i Kårsbyhallen.
                 </Typography>
                 <Typography variant="h6" gutterBottom sx={{ color: 'white' }}>
@@ -107,10 +107,8 @@ const Judo = () => {
                   TRÄNINGSAVGIFTER OCH BETALNINGSINFORMATION
                 </HeaderText>
                 <Typography variant={isMobile ? "body1" : "h6"} paragraph>
-                  Träningsavgiften för samtliga barn är 750kr per termin och medlemsavgiften ingår i denna avgift.
-                </Typography>
-                <Typography variant={isMobile ? "body1" : "h6"} paragraph>
-                  Träningsavgiften betalas in till föreningens bankgiro (5220-6166) senast 2 månader efter påbörjad termin. Märk betalningen med för- och efternamn på barnet, samt vilken termin betalningen gäller (exempelvis HT-2024).
+                Träningsavgiften för samtliga barn är 750kr per termin och medlemsavgiften ingår i denna avgift.
+                Träningsavgiften betalas in till föreningens bankgiro (5220-6166) senast 2 månader efter påbörjad termin. Märk betalningen med för- och efternamn på barnet, samt vilken termin betalningen gäller (exempelvis HT-2024).
                 </Typography>
               </Grid>
             </Grid>

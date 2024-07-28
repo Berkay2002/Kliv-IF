@@ -100,9 +100,9 @@ return (
         <Container maxWidth={isMobile ? 'sm' : 'lg'}>
           <Grid container spacing={isMobile ? 3 : 5}>
             <Grid item xs={12} md={6}>
-              <Typography variant={isMobile ? "h4" : "h3"} gutterBottom>
+              <HeaderText variant={isMobile ? "h4" : "h3"} gutterBottom>
                 LOVAKTIVITETER
-              </Typography>
+              </HeaderText>
             </Grid>
             <Grid item xs={12} md={6}>
               <Typography variant={isMobile ? "body1" : "h6"} gutterBottom>
