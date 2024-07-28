@@ -21,8 +21,14 @@ const linksContent = [
 const Footer = () => {
   const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext);
 
+  // Helper function to apply margins consistently
+  const getMarginStyle = () => ({
+    marginLeft: isMobile ? 0 : '3%',
+    marginRight: isMobile ? 0 : '3%',
+  });
+
   return (
-    <Box sx={{ marginLeft: '3%', marginRight: '3%' }}>
+    <Box sx={{ ...getMarginStyle(), }}>
       <Grid
         container
         sx={{

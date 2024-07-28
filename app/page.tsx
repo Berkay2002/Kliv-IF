@@ -94,7 +94,7 @@ const Home = () => {
     const getMarginStyle = () => ({
       marginLeft: isMobile ? 0 : '3%',
       marginRight: isMobile ? 0 : '3%',
-    });
+  });
 
   return (
     <>
@@ -139,7 +139,7 @@ const Home = () => {
         </Box>
 
         {/* VÅR VISION section */}
-        <Box sx={{ backgroundColor: '#dba436', py: isMobile ? 5 : 10, ...getMarginStyle() }}>
+        <Box sx={{ backgroundColor: '#f4c430', py: isMobile ? 5 : 10, ...getMarginStyle() }}>
           <Container maxWidth={isMobile ? 'xl' : 'lg'}>
             <Grid container spacing={5} direction={isMobile ? 'column' : 'row'}>
               <Grid item xs={12} md={4}>
@@ -252,14 +252,14 @@ const Home = () => {
           </Container>
         </Box>
 
-        <Box sx={{ backgroundColor: '#dba436', py: isMobile ? 1 : 13, ...getMarginStyle() }}></Box>
+        <Box sx={{ backgroundColor: '#f4c430', py: isMobile ? 1 : 13, ...getMarginStyle() }}></Box>
 
         {/* VÅRT FANTASTISKA STYRELSE section */}
         {isMobile || isIpad ? (
           <Box sx={{ position: 'relative', backgroundColor: '#f0f0f0', ...getMarginStyle() }}>
             <Box 
               sx={{ 
-                backgroundColor: '#dba436',
+                backgroundColor: '#f4c430',
                 height: isMobile ? '150px' : '200px',
                 width: '100%'
               }} 
@@ -285,7 +285,7 @@ const Home = () => {
                       sx={{ 
                         fontWeight: 'bold', 
                         fontSize: isMobile ? '2.5rem' : '3.5rem',
-                        color: '#dba436',
+                        color: '#f4c430',
                         mb: 1
                       }}
                     >
