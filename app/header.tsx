@@ -2,16 +2,14 @@ import React, { useContext, useState, useEffect, useRef } from 'react';
 import { Box, Typography, useTheme, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/system';
 import { MobileStateContext } from './MobileContext';
-import { Oswald } from 'next/font/google';
-
-const oswald = Oswald({ subsets: ['latin'] });
+import './globals.css';
 
 const HeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: `${oswald.style.fontFamily}, "Arial Narrow", sans-serif`,
+  fontFamily: `"Oswald", "Arial Narrow", sans-serif`,
   fontWeight: 800,
   letterSpacing: '-0.02em',
   textTransform: 'uppercase',
-  lineHeight: 1.2,
+  lineHeight: 1,
 }));
 
 interface HeaderProps {

@@ -31,13 +31,11 @@ import SportsBasketBallIcon from '@mui/icons-material/SportsBasketball';
 import HikingIcon from '@mui/icons-material/Hiking';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import { MobileStateContext } from '../MobileContext';
-import { Oswald } from 'next/font/google';
 import { styled } from '@mui/system';
-
-const oswald = Oswald({ subsets: ['latin'] });
+import '../globals.css';
 
 const HeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: `${oswald.style.fontFamily}, "Arial Narrow", sans-serif`,
+  fontFamily: `"Oswald", "Arial Narrow", sans-serif`,
   fontWeight: 800,
   letterSpacing: '-0.02em',
   textTransform: 'uppercase',

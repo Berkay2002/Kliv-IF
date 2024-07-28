@@ -6,13 +6,11 @@ import { useForm } from 'react-hook-form';
 import Header from '../header';
 import Image from 'next/image';
 import { MobileStateContext } from '../MobileContext';
-import { Oswald } from 'next/font/google';
 import { styled } from '@mui/system';
-
-const oswald = Oswald({ subsets: ['latin'] });
+import '../globals.css';
 
 const HeaderText = styled(Typography)(({ theme }) => ({
-  fontFamily: `${oswald.style.fontFamily}, "Arial Narrow", sans-serif`,
+  fontFamily: `"Oswald", "Arial Narrow", sans-serif`,
   fontWeight: 800,
   letterSpacing: '-0.02em',
   textTransform: 'uppercase',
