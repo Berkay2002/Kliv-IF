@@ -57,7 +57,6 @@ const Home = () => {
   return (
     <>
       {/* Header component displaying the logo and background video */}
-      <Header logo="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg" backgroundImageDesktop='/videos/KlivMontage720p.mp4' backgroundImageMobile='/videos/video1.mp4' />
 
       <Container sx={{ mt: -2 }}>
         {/* Container for the main content with some margin adjustment */}
