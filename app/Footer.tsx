@@ -29,7 +29,6 @@ const Footer = () => {
           backgroundColor: 'black',
           p: 3,
           paddingTop: '60px',
-          marginTop: '10px',
           display: 'flex',
           justifyContent: 'center',
         }}
