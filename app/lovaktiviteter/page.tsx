@@ -31,6 +31,19 @@ import SportsBasketBallIcon from '@mui/icons-material/SportsBasketball';
 import HikingIcon from '@mui/icons-material/Hiking';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 import { MobileStateContext } from '../MobileContext';
+import { Oswald } from 'next/font/google';
+import { styled } from '@mui/system';
+
+const oswald = Oswald({ subsets: ['latin'] });
+
+const HeaderText = styled(Typography)(({ theme }) => ({
+  fontFamily: `${oswald.style.fontFamily}, "Arial Narrow", sans-serif`,
+  fontWeight: 800,
+  letterSpacing: '-0.02em',
+  textTransform: 'uppercase',
+  lineHeight: 1,
+}));
+
 
 const Lovaktiviteter = () => {
   const { isMobile, isIpad } = useContext(MobileStateContext);
@@ -109,9 +122,9 @@ return (
         <Container maxWidth={isMobile ? 'sm' : 'lg'}>
           <Grid container spacing={isMobile ? 3 : 5}>
             <Grid item xs={12} md={4}>
-              <Typography variant={isMobile ? "h3" : "h2"} gutterBottom sx={{ color: 'white' }}>
+              <HeaderText variant={isMobile ? "h3" : "h2"} gutterBottom sx={{ color: 'white' }}>
                 VAD VI ARRANGERAR
-              </Typography>
+              </HeaderText>
             </Grid>
             <Grid item xs={12} md={8}>
               <Grid container spacing={isMobile ? 2 : 5}>
