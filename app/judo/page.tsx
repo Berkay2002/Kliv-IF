@@ -89,7 +89,7 @@ const Judo = () => {
                 <Typography variant={isMobile ? "body1" : "h6"} paragraph sx={{ color: 'white' }}>
                   Vi erbjuder för tillfället träningar för barn 7-12 år. Träningarna hålls på måndagar 17:30-19:30 i Kårsbyhallen.
                 </Typography>
-                <Typography variant="h6" gutterBottom sx={{ color: 'white' }}>
+                <Typography variant={isMobile ? "body1" : "h6"} paragraph sx={{ color: 'white' }}>
                   Du är välkommen att ta med ditt barn och att testa på judo kostnadsfritt under ett pass - se bara till att kontakta vår medlemsansvariga innan du dyker upp.
                 </Typography>
               </Grid>
