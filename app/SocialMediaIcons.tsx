@@ -1,4 +1,4 @@
-import { Grid, IconButton, Typography, Link } from "@mui/material";
+import { Grid, IconButton, Link } from "@mui/material";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { useContext } from "react";
@@ -19,7 +19,7 @@ export default function SocialMediaIcons() {
           aria-label="upload picture"
           component="label"
         >
-          <FacebookRoundedIcon />
+          <FacebookRoundedIcon sx={{ color: "black" }} />
         </IconButton>
       </Link>
       <Link
@@ -32,7 +32,7 @@ export default function SocialMediaIcons() {
           aria-label="upload picture"
           component="label"
         >
-          <InstagramIcon />
+          <InstagramIcon sx={{ color: "black" }} />
         </IconButton>
       </Link>
     </Grid>

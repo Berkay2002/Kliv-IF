@@ -22,88 +22,90 @@ const Footer = () => {
   const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext);
 
   return (
-    <Grid
-      container
-      sx={{
-        backgroundColor: 'black',
-        p: 3,
-        paddingTop: '60px',
-        marginTop: '10px',
-        display: 'flex',
-        justifyContent: 'center',
-      }}
-    >
-      {/* Logo Section */}
-      <Grid item xs={12} md={4}>
-        <Grid container justifyContent="center" alignItems="center">
-          <Image src="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg" height={200} width={200} alt="Logo" />
-          <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
-            {/* Facebook Link */}
-            <Link
-              target="_blank"
-              rel="noopener"
-              href="https://sv-se.facebook.com/"
-            >
-              <IconButton color="secondary" aria-label="Facebook">
-                <FacebookRoundedIcon />
-              </IconButton>
-            </Link>
-            {/* Instagram Link */}
-            <Link
-              target="_blank"
-              rel="noopener"
-              href="https://www.instagram.com/"
-            >
-              <IconButton color="secondary" aria-label="Instagram">
-                <InstagramIcon />
-              </IconButton>
-            </Link>
-          </Grid>
-        </Grid>
-      </Grid>
-
-      {/* Contact Information Section */}
-      <Grid item xs={12} md={4}>
-        <Typography variant="h4" color="white" align={isMobile ? 'center' : 'left'}>
-          Kontakt
-        </Typography>
-        <Typography color="white" align={isMobile ? 'center' : 'left'}>
-          Kliv Idrottsförening <br />
-          Tomtbergavägen 370A <br />
-          145 71 Norsborg <br />
-          info@kliv.se
-        </Typography>
-        <br />
-      </Grid>
-
-      {/* Links Section */}
-      <Grid item xs={12} md={4}>
-        <Typography variant="h4" color="white" align={isMobile ? 'center' : 'left'}>
-          Länkar
-        </Typography>
-        {linksContent.map((link, index) => (
-          <Link target="_blank" rel="noopener" href={link.path} key={index}>
-            <Typography color="white" align={isMobile ? 'center' : 'left'}>{link.title}</Typography>
-          </Link>
-        ))}
-      </Grid>
-
-      {/* Social Media Section */}
+    <Box sx={{ marginLeft: '3%', marginRight: '3%' }}>
       <Grid
-        item
-        xs={12}
+        container
         sx={{
+          backgroundColor: 'black',
+          p: 3,
+          paddingTop: '60px',
+          marginTop: '10px',
           display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
           justifyContent: 'center',
-          width: '50%',
-          padding: 1,
-          m: 2,
         }}
       >
+        {/* Logo Section */}
+        <Grid item xs={12} md={4}>
+          <Grid container justifyContent="center" alignItems="center">
+            <Image src="/logo/KLIV_idrottsforening_logga_r01_TRANSPARENT.svg" height={200} width={200} alt="Logo" />
+            <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+              {/* Facebook Link */}
+              <Link
+                target="_blank"
+                rel="noopener"
+                href="https://sv-se.facebook.com/"
+              >
+                <IconButton color="secondary" aria-label="Facebook">
+                  <FacebookRoundedIcon />
+                </IconButton>
+              </Link>
+              {/* Instagram Link */}
+              <Link
+                target="_blank"
+                rel="noopener"
+                href="https://www.instagram.com/"
+              >
+                <IconButton color="secondary" aria-label="Instagram">
+                  <InstagramIcon />
+                </IconButton>
+              </Link>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        {/* Contact Information Section */}
+        <Grid item xs={12} md={4}>
+          <Typography variant="h4" color="white" align={isMobile ? 'center' : 'left'}>
+            Kontakt
+          </Typography>
+          <Typography color="white" align={isMobile ? 'center' : 'left'}>
+            Kliv Idrottsförening <br />
+            Tomtbergavägen 370A <br />
+            145 71 Norsborg <br />
+            info@kliv.se
+          </Typography>
+          <br />
+        </Grid>
+
+        {/* Links Section */}
+        <Grid item xs={12} md={4}>
+          <Typography variant="h4" color="white" align={isMobile ? 'center' : 'left'}>
+            Länkar
+          </Typography>
+          {linksContent.map((link, index) => (
+            <Link target="_blank" rel="noopener" href={link.path} key={index}>
+              <Typography color="white" align={isMobile ? 'center' : 'left'}>{link.title}</Typography>
+            </Link>
+          ))}
+        </Grid>
+
+        {/* Social Media Section */}
+        <Grid
+          item
+          xs={12}
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '50%',
+            padding: 1,
+            m: 2,
+          }}
+        >
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 };
 

@@ -1,8 +1,7 @@
 // client 
 "use client";
 
-// app/pages/lovaktiviteter.tsx
-import React from 'react';
+import React, { useContext } from 'react';
 import { 
   Container, 
   Typography, 
@@ -10,7 +9,9 @@ import {
   Card, 
   CardContent, 
   CardMedia, 
-  Divider 
+  Grid,
+  useTheme,
+  useMediaQuery
 } from '@mui/material';
 import Header from '../header';
 import Image from 'next/image';
@@ -23,11 +24,25 @@ import {
   TimelineDot,
   TimelineOppositeContent,
 } from '@mui/lab';
+import SportsCricketIcon from '@mui/icons-material/SportsCricket';
+import DownhillSkiingIcon from '@mui/icons-material/DownhillSkiing';
+import EggIcon from '@mui/icons-material/Egg';
+import SportsBasketBallIcon from '@mui/icons-material/SportsBasketball';
+import HikingIcon from '@mui/icons-material/Hiking';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import { MobileStateContext } from '../MobileContext';
 
 const Lovaktiviteter = () => {
+  const { isMobile, isIpad } = useContext(MobileStateContext);
+  const theme = useTheme();
+  const isSmallMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  const getMarginStyle = () => ({
+    marginLeft: isMobile || isIpad ? 0 : '3%',
+    marginRight: isMobile || isIpad ? 0 : '3%',
+  });
+
   const imageStyle: React.CSSProperties = {
-    borderRadius: '15px',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
     objectFit: 'cover',
   };
 
@@ -66,61 +81,106 @@ const activities = [
 
 return (
   <>
-    <Header title="LOVAKTIVITETER" backgroundImageDesktop='/sportstruck/sportstruck1.png' backgroundImageMobile='/sektionen/styrelsen-mobil.jpeg' />
-    <Container sx={{ mt: 4 }}>
-
-      <Typography variant="h3" gutterBottom align="center">
-        Lovaktiviteter
-      </Typography>
-      <Typography variant="body1" paragraph>
-        Under loven erbjuder vi en trygg plats för hundratals barn som får prova 
-        på ledarledda idrottsaktiviteter helt kostnadsfritt. För många barn blir 
-        det första gången som de får prova på en ny idrott. Genom att samarbeta med 
-        lokala idrottsföreningar hjälper vi föreningarna att introducera deras verksamheter 
-        för barn och deras föräldrar. På detta vis möjliggör vi för barn i området att kliva in i idrottens värld!
-        Håll dig uppdaterad inför nästa lovaktivitet på våra sociala medier!
-      </Typography>
-
-      <Timeline position="alternate">
-        {activities.map((event: any, index: number) => (
-          <TimelineItem key={index}>
-            
-            <TimelineOppositeContent>
-              <Typography variant="h6" color="black">
-                {event.event}
+    <Header title="LOVAKTIVITETER" description={''} />
+    <Box sx={{ backgroundColor: '#FFFFFF' }}>
+      <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
+        <Container maxWidth={isMobile ? 'sm' : 'lg'}>
+          <Grid container spacing={isMobile ? 3 : 5}>
+            <Grid item xs={12} md={6}>
+              <Typography variant={isMobile ? "h4" : "h3"} gutterBottom>
+                LOVAKTIVITETER
               </Typography>
-            </TimelineOppositeContent>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography variant={isMobile ? "body1" : "h6"} gutterBottom>
+                Under loven erbjuder vi en trygg plats för hundratals barn som får prova 
+                på ledarledda idrottsaktiviteter helt kostnadsfritt. För många barn blir 
+                det första gången som de får prova på en ny idrott. Genom att samarbeta med 
+                lokala idrottsföreningar hjälper vi föreningarna att introducera deras verksamheter 
+                för barn och deras föräldrar. På detta vis möjliggör vi för barn i området att kliva in i idrottens värld!
+                Håll dig uppdaterad inför nästa lovaktivitet på våra sociala medier!                
+              </Typography>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
 
-            <TimelineSeparator>
+      <Box sx={{ backgroundColor: '#dba436', py: isMobile ? 5 : 7, ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
+        <Container maxWidth={isMobile ? 'sm' : 'lg'}>
+          <Grid container spacing={isMobile ? 3 : 5}>
+            <Grid item xs={12} md={4}>
+              <Typography variant={isMobile ? "h3" : "h2"} gutterBottom sx={{ color: 'white' }}>
+                VAD VI ARRANGERAR
+              </Typography>
+            </Grid>
+            <Grid item xs={12} md={8}>
+              <Grid container spacing={isMobile ? 2 : 5}>
+                {[
+                  { icon: DownhillSkiingIcon, text: "SPORTLOVSKUL" },
+                  { icon: EggIcon, text: "PÅSKLOVSKUL" },
+                  { icon: SportsCricketIcon, text: "SPORTSTRUCK" },
+                  { icon: SportsBasketBallIcon, text: "SPORTOTEKET" },
+                  { icon: HikingIcon, text: "HÖSTLOVSKUL" },
+                  { icon: AcUnitIcon, text: "JULLOVSKUL" },
+                ].map((item, index) => (
+                  <Grid item xs={6} sm={4} key={index} textAlign="center">
+                    <item.icon sx={{ fontSize: isMobile ? '2rem' : '3rem', mb: 1, color: 'white' }} />
+                    <Typography variant={isMobile ? "subtitle1" : "h6"} sx={{ color: 'white' }}>
+                      {item.text}
+                    </Typography>
+                  </Grid>
+                ))}
+              </Grid>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
+      <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
+        <Timeline position={isMobile ? "right" : "alternate"}>
+          {activities.map((event, index) => (
+            <TimelineItem key={index}>
+              {!isMobile && (
+                <TimelineOppositeContent>
+                  <Typography variant={isMobile ? "h5" : "h4"} color="black">
+                    {event.event}
+                  </Typography>
+                </TimelineOppositeContent>
+              )}
+              <TimelineSeparator>
                 <TimelineDot sx={{ bgcolor: 'black' }} />
                 {index < activities.length - 1 && <TimelineConnector sx={{ bgcolor: 'black' }} />}
-            </TimelineSeparator>
-
-            <TimelineContent>
-              <Card sx={{ mb: 4, maxWidth: 345, mx: 'auto' }}>
-                <CardMedia>
-                  <Image
-                    src={event.image}
-                    alt={event.title}
-                    width={345}
-                    height={230} // For consistent size
-                    layout="responsive"
-                    style={imageStyle}
-                  />
-                </CardMedia>
-                <CardContent sx={{ textAlign: 'center' }}>
-                  <Typography variant="h6">{event.title}</Typography>
-                  <Typography variant="body2" color="textPrimary">
-                    {event.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </TimelineContent>
-
-          </TimelineItem>
-        ))}
-      </Timeline>
-    </Container>
+              </TimelineSeparator>
+              <TimelineContent>
+                <Card sx={{ mb: isMobile ? 2 : 0, maxWidth: isMobile ? '100%' : 345, mx: 'auto' }}>
+                  <CardMedia>
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      width={345}
+                      height={230}
+                      layout="responsive"
+                      objectFit="cover"
+                    />
+                  </CardMedia>
+                  <CardContent sx={{ textAlign: 'center' }}>
+                    <Typography variant={isMobile ? "h6" : "h5"}>{event.title}</Typography>
+                    {isMobile && (
+                      <Typography variant="subtitle1" color="textSecondary" gutterBottom>
+                        {event.event}
+                      </Typography>
+                    )}
+                    <Typography variant="body2" color="textPrimary">
+                      {event.description}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </TimelineContent>
+            </TimelineItem>
+          ))}
+        </Timeline>
+      </Box>
+    </Box>
   </>
 );
 };
