@@ -74,7 +74,7 @@ const Kontakt = () => {
 
   return (
     <>
-      <Header title='KONTAKTA OSS' backgroundImageDesktop='/videos/KlivMontage720p.mp4' backgroundImageMobile='/videos/video1.mp4' />
+    <Header title="KONTAKTA-OSS" description={''} />
       <Container className="kontakta-oss" sx={{ backgroundColor: '#ffffff', py: 8, maxWidth: 'lg' }}>
         <Typography variant="h2" align="center" gutterBottom>
           Kontakta oss

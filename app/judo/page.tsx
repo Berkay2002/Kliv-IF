@@ -40,7 +40,7 @@ const Judo = () => {
 
   return (
     <>
-      <Header title="JUDO" backgroundImageDesktop='/judo/judo1.png' backgroundImageMobile='/judo/mobilJudo.jpg' />
+    <Header title="JUDO" description={''} />
       <Container sx={{ mt: 4, mb: 6 }}>
 
       <Grid container spacing={4} justifyContent="center" alignItems="center" sx={{ mb: 6 }}>
