@@ -130,14 +130,14 @@ const Kontakt = () => {
           </Container>
         </Box>
 
-        <Box sx={{ backgroundColor: '#f4c430', py: isMobile ? 1 : 13, ...getMarginStyle() }}></Box>
+        <Box sx={{ backgroundColor: '#ADD8E6', py: isMobile ? 1 : 13, ...getMarginStyle() }}></Box>
 
         {/* VÅRT FANTASTISKA STYRELSE section */}
         {isMobile || isIpad ? (
           <Box sx={{ position: 'relative', backgroundColor: '#f0f0f0', ...getMarginStyle() }}>
             <Box 
               sx={{ 
-                backgroundColor: '#f4c430',
+                backgroundColor: '#ADD8E6',
                 height: isMobile ? '150px' : '200px',
                 width: '100%'
               }} 
@@ -163,7 +163,7 @@ const Kontakt = () => {
                       sx={{ 
                         fontWeight: 'bold', 
                         fontSize: isMobile ? '2.5rem' : '3.5rem',
-                        color: '#f4c430',
+                        color: '#ADD8E6',
                         mb: 1
                       }}
                     >
@@ -186,7 +186,7 @@ const Kontakt = () => {
                 {/* Description for mobile and iPad */}
                 <Grid item xs={12}>
                   <Typography variant={isMobile ? "body1" : "h6"}>
-                    Hej! Här är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att <Link href="/kontakta-oss"><span style={{ color: '#f4c430', fontWeight: 'bold' }}>kontakta oss</span></Link>.
+                    Hej! Här är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att <Link href="/kontakta-oss"><span style={{ color: '#ADD8E6', fontWeight: 'bold' }}>kontakta oss</span></Link>.
                   </Typography>
                 </Grid>
               </Grid>
@@ -229,7 +229,7 @@ const Kontakt = () => {
                 <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: 'black' }}>
                   VÅRT
                 </HeaderText>
-                <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: '#f4c430' }}>
+                <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: '#ADD8E6' }}>
                   FANTASTISKA
                 </HeaderText>
                 <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: 'black' }}>

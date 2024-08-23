@@ -163,7 +163,7 @@ const Home = () => {
               justifyContent: 'center',
               alignItems: 'center',
               textAlign: 'center',
-              backgroundColor: 'rgba(244, 196, 48, 0.85)', // Yellow overlay with opacity
+              backgroundColor: 'rgba(173, 216, 230, 0.85)', // Yellow overlay with opacity
               zIndex: 1,
               padding: '3%',
             }}
@@ -199,7 +199,7 @@ const Home = () => {
         </Box>
 
         {/* VÅR VISION section */}
-        <Box sx={{ backgroundColor: '#f4c430', py: isMobile ? 5 : 10, ...getMarginStyle() }}>
+        <Box sx={{ backgroundColor: '#ADD8E6', py: isMobile ? 5 : 10, ...getMarginStyle() }}>
           <Container maxWidth={isMobile ? 'xl' : 'lg'}>
             <Grid container spacing={5} direction={isMobile ? 'column' : 'row'}>
               <Grid item xs={12} md={4}>
@@ -307,14 +307,14 @@ const Home = () => {
           </Container>
         </Box>
 
-        <Box sx={{ backgroundColor: '#f4c430', py: isMobile ? 1 : 13, ...getMarginStyle() }}></Box>
+        <Box sx={{ backgroundColor: '#ADD8E6', py: isMobile ? 1 : 13, ...getMarginStyle() }}></Box>
 
         {/* VÅRT FANTASTISKA STYRELSE section */}
         {isMobile || isIpad ? (
           <Box sx={{ position: 'relative', backgroundColor: '#f0f0f0', ...getMarginStyle() }}>
             <Box 
               sx={{ 
-                backgroundColor: '#f4c430',
+                backgroundColor: '#ADD8E6',
                 height: isMobile ? '150px' : '200px',
                 width: '100%'
               }} 
@@ -340,7 +340,7 @@ const Home = () => {
                       sx={{ 
                         fontWeight: 'bold', 
                         fontSize: isMobile ? '2.5rem' : '3.5rem',
-                        color: '#f4c430',
+                        color: '#ADD8E6',
                         mb: 1
                       }}
                     >
@@ -363,7 +363,7 @@ const Home = () => {
                 {/* Description for mobile and iPad */}
                 <Grid item xs={12}>
                   <Typography variant={isMobile ? "body1" : "h6"}>
-                    Hej! Här är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att <Link href="/kontakta-oss"><span style={{ color: '#dba436', fontWeight: 'bold' }}>kontakta oss</span></Link>.
+                    Hej! Här är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att <Link href="/kontakta-oss"><span style={{ color: '#ADD8E6', fontWeight: 'bold' }}>kontakta oss</span></Link>.
                   </Typography>
                 </Grid>
               </Grid>
@@ -406,7 +406,7 @@ const Home = () => {
                 <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: 'black' }}>
                   VÅRT
                 </HeaderText>
-                <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: '#dba436' }}>
+                <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: '#ADD8E6' }}>
                   FANTASTISKA
                 </HeaderText>
                 <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: 'black' }}>

@@ -116,7 +116,7 @@ return (
         </Container>
       </Box>
 
-      <Box sx={{ backgroundColor: '#f4c430', py: isMobile ? 5 : 7, ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
+      <Box sx={{ backgroundColor: '#ADD8E6', py: isMobile ? 5 : 7, ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
         <Container maxWidth={isMobile ? 'sm' : 'lg'}>
           <Grid container spacing={isMobile ? 3 : 5}>
             <Grid item xs={12} md={4}>

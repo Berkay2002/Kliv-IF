@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ title, description }) => {
       <Box
         sx={{
           minHeight: isMobile ? '50vh' : '70vh',
-          backgroundColor: '#f4c430',
+          backgroundColor: '#ADD8E6',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ title, description }) => {
           top: 0,
           width: `${orangeBoxWidth}%`,
           height: '100%',
-          backgroundColor: '#f4c430',
+          backgroundColor: '#ADD8E6',
           transition: 'width 0.2s ease-out',
         }}
       />

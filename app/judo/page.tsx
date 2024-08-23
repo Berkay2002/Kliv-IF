@@ -77,7 +77,7 @@ const Judo = () => {
           </Container>
         </Box>
 
-        <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#dba436', ...getMarginStyle() }}>
+        <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#ADD8E6', ...getMarginStyle() }}>
           <Container maxWidth={isMobile ? 'xl' : 'lg'}>
             <Grid container spacing={5} direction={isMobile ? 'column' : 'row'}>
               <Grid item xs={12} md={6}>
@@ -114,7 +114,7 @@ const Judo = () => {
         </Box>
 
 
-        <Box sx={{ backgroundColor: '#dba436', py: isMobile ? 1 : 13, ...getMarginStyle() }}></Box>
+        <Box sx={{ backgroundColor: '#ADD8E6', py: isMobile ? 1 : 13, ...getMarginStyle() }}></Box>
 
         
 
@@ -123,7 +123,7 @@ const Judo = () => {
           <Box sx={{ position: 'relative', backgroundColor: '#f0f0f0', ...getMarginStyle() }}>
             <Box 
               sx={{ 
-                backgroundColor: '#dba436',
+                backgroundColor: '#ADD8E6',
                 height: isMobile ? '150px' : '200px',
                 width: '100%'
               }} 
@@ -150,7 +150,7 @@ const Judo = () => {
                       sx={{ 
                         fontWeight: 'bold', 
                         fontSize: isMobile ? '2.5rem' : '3.5rem',
-                        color: '#dba436',
+                        color: '#ADD8E6',
                         mb: 1
                       }}
                     >
@@ -195,7 +195,7 @@ const Judo = () => {
                   sx={{ 
                     fontWeight: 'bold', 
                     fontSize: isMobile ? '2.5rem' : '3.5rem',
-                    color: '#dba436',
+                    color: '#ADD8E6',
                     mb: 1
                   }}
                 >
