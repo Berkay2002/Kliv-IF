@@ -422,8 +422,18 @@ const Home = () => {
 
             <Container>
               <Grid container spacing={2} justifyContent="center">
-                {members.map((member, index) => (
-                  <Grid item key={index} xs={12} sm={6} md={4} lg={2.4}>
+              {members.map((member, index) => (
+                <Grid 
+                  item 
+                  key={index} 
+                  xs={12} 
+                  sm={6} 
+                  md={4} 
+                  lg={2.4}
+                  sx={{
+                    mb: isMobile && index === members.length - 1 ? 5 : 0, // Add margin bottom for the last card on mobile
+                  }}
+                >
                     <Card>
                       <CardMedia>
                         <Image
@@ -449,6 +459,7 @@ const Home = () => {
                 ))}
               </Grid>
             </Container>
+            
           </Box>
         )}
 

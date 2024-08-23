@@ -87,7 +87,7 @@ const NavBar = () => {
             <Link href="/" passHref legacyBehavior>
               <a>
                 <Image
-                  src="/logo/transparant.svg"
+                  src="/logo/transparant-svart.svg" // Always use the black variant of the logo
                   alt="Kliv Idrottsförening"
                   width={75}
                   height={75}
@@ -96,7 +96,7 @@ const NavBar = () => {
             </Link>
           </Box>
           
-          {/* Ant Design MenuOutlined Icon */}
+          {/* Menu Icon */}
           <Box
             sx={{
               position: 'fixed',
@@ -104,15 +104,15 @@ const NavBar = () => {
               right: '10px',
               zIndex: 1200,
               display: 'flex',
-              justifyContent: 'flex-start', // Align to start (left) of the box
-              width: '50px', // Set a width for the box
+              justifyContent: 'flex-start',
+              width: '50px',
             }}
           >
             <MenuOutlined 
               onClick={toggleDrawer(!isOpen)}
               style={{
                 fontSize: '50px',
-                color: scroll ? 'black' : 'white',
+                color: 'black', // Set color to black at all times
                 transition: 'transform 0.3s',
                 transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                 cursor: 'pointer',

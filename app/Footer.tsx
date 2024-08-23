@@ -28,7 +28,7 @@ const Footer = () => {
   });
 
   return (
-    <Box sx={{ ...getMarginStyle(), }}>
+    <Box sx={{ ...getMarginStyle() }}>
       <Grid
         container
         sx={{
