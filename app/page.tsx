@@ -4,7 +4,7 @@
 'use client'; 
 // Indicates that this file is client-side code, a Next.js directive
 
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Container, Grid, Typography, Card, CardMedia, CardContent, Box, Button, Link, useTheme, useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import AOS from 'aos';
@@ -19,6 +19,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { MobileStateContext } from './MobileContext';
 import { styled } from '@mui/system';
 import './globals.css';
+import { calculateMinHeight } from './CalculateMinHeight';
 
 
 
@@ -66,6 +67,8 @@ const HeaderText = styled(Typography)(({ theme }) => ({
 const Home = () => {
   const theme = useTheme();
   const { isMobile, isIpad } = useContext(MobileStateContext);
+  const [minHeight, setMinHeight] = useState<number>(0);
+
 
   useEffect(() => {
     if (!isMobile) {
@@ -75,6 +78,18 @@ const Home = () => {
       });
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    const imageSources = [
+      '/lovaktiviteter/lovaktiviteter1.png',
+      '/lovaktiviteter/lovaktiviteter2.png',
+      '/lovaktiviteter/lovaktiviteter3.png',
+    ];
+
+    calculateMinHeight(imageSources).then((minHeight) => {
+      setMinHeight(minHeight);
+    });
+  }, []);
 
   const settings = {
     dots: false,
@@ -96,26 +111,73 @@ const Home = () => {
 
   return (
     <>
+      {/* Hero Section */}
       <Box
         sx={{
-          backgroundColor: '#f4c430',
-          minHeight: '100vh',
+          position: 'relative',
+          width: '100%',
+          height: '100vh',
+          overflow: 'hidden',
           display: 'flex',
-          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          textAlign: 'center',
-          padding: '3%',
-          ...getMarginStyle(),
         }}
       >
-        <HeaderText variant={isMobile ? "h2" : "h1"} sx={{ color: '#ffffff', fontSize: isMobile ? '3rem' : isIpad ? '4rem' : '5rem', marginBottom: 2 }}>
-          KLIV
-        </HeaderText>
-        <HeaderText variant={isMobile ? "h3" : "h2"} sx={{ color: '#000000', fontSize: isMobile ? '2rem' : isIpad ? '3rem' : '4rem' }}>
-          IN I IDROTTENS VÄRLD
-        </HeaderText>
+        {/* Box Container with Margin */}
+        <Box
+          sx={{
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            ...getMarginStyle(), // Apply margin to the box
+            overflow: 'hidden',
+          }}
+        >
+          {/* Video Background */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              transform: 'translate(-50%, -50%)',
+            }}
+          >
+            <source src="/videos/KlivMontage720p.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+
+          {/* Content with Yellow Overlay */}
+          <Box
+            sx={{
+              position: 'relative',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              textAlign: 'center',
+              backgroundColor: 'rgba(244, 196, 48, 0.85)', // Yellow overlay with opacity
+              zIndex: 1,
+              padding: '3%',
+            }}
+          >
+            <HeaderText variant={isMobile ? 'h2' : 'h1'} sx={{ color: '#ffffff', fontSize: isMobile ? '3rem' : isIpad ? '4rem' : '5rem', marginBottom: 2 }}>
+              KLIV
+            </HeaderText>
+            <HeaderText variant={isMobile ? 'h3' : 'h2'} sx={{ color: '#000000', fontSize: isMobile ? '2rem' : isIpad ? '3rem' : '4rem' }}>
+              IN I IDROTTENS VÄRLD
+            </HeaderText>
+          </Box>
+        </Box>
       </Box>
+
 
       <Box sx={{ backgroundColor: 'white' }}>
         {/* VEM ÄR VI section */}
@@ -196,40 +258,35 @@ const Home = () => {
         </Box>
 
         {/* Carousel Section */}
-        <Box py={0} sx={{ backgroundColor: '#f0f0f0', ...getMarginStyle() }}>
-          <Box sx={{ width: '100%', margin: '0 auto' }}>
+        <Box py={0} sx={{ backgroundColor: '#f0f0f0', height: '100%', ...getMarginStyle() }}>
+          <Box sx={{ width: '100%', margin: '0 auto', height: '100%' }}>
             <Slider {...settings}>
-              <div className="carousel-image-wrapper">
-                <Image src="/lovaktiviteter/lovaktiviteter1.png" alt="Image 1" layout="fill" className="carousel-image" />
+              <div className="carousel-image-wrapper" style={{ minHeight: `${minHeight}px` }}>
+                <img
+                  src="/lovaktiviteter/lovaktiviteter1.png"
+                  alt="Image 1"
+                  className="carousel-image"
+                />
               </div>
-              <div className="carousel-image-wrapper">
-                <Image src="/lovaktiviteter/lovaktiviteter2.png" alt="Image 2" layout="fill" className="carousel-image" />
+              <div className="carousel-image-wrapper" style={{ minHeight: `${minHeight}px` }}>
+                <img
+                  src="/lovaktiviteter/lovaktiviteter2.png"
+                  alt="Image 2"
+                  className="carousel-image"
+                />
               </div>
-              <div className="carousel-image-wrapper">
-                <Image src="/lovaktiviteter/lovaktiviteter3.png" alt="Image 3" layout="fill" className="carousel-image" />
+              <div className="carousel-image-wrapper" style={{ minHeight: `${minHeight}px` }}>
+                <img
+                  src="/lovaktiviteter/lovaktiviteter3.png"
+                  alt="Image 3"
+                  className="carousel-image"
+                />
               </div>
               {/* Add more images as needed */}
             </Slider>
           </Box>
-          <style jsx>{`
-            .carousel-image-wrapper {
-              position: relative;
-              width: 100%;
-              height: 0;
-            padding-bottom: ${isMobile ? '56.25%' : '42.86%'}; /* 16:9 aspect ratio for mobile, 21:9 for tablet/desktop */
-              overflow: hidden;
-            }
-
-            .carousel-image {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
-            }
-          `}</style>
         </Box>
+
 
         {/* VÅR STRÄVAN section */}
         <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...getMarginStyle() }}>
