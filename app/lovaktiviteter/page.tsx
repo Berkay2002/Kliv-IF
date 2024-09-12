@@ -92,7 +92,12 @@ const activities = [
 
 return (
   <>
-    <Header title="LOVAKTIVITETER" description={''} />
+    <Header
+        title="LOVAKTIVITETER"
+        description="Vi erbjuder en trygg plats för barn som får prova på ledarledda idrottsaktiviteter helt kostnadsfritt."
+        imageUrl={isMobile ? '/lovaktiviteter/lovaktiviteter1.png' : '/lovaktiviteter/lovaktiviteter1.png'}
+      />
+      
     <Box sx={{ backgroundColor: '#FFFFFF' }}>
       <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
         <Container maxWidth={isMobile ? 'sm' : 'lg'}>

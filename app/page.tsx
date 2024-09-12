@@ -163,15 +163,22 @@ const Home = () => {
               justifyContent: 'center',
               alignItems: 'center',
               textAlign: 'center',
-              backgroundColor: 'rgba(173, 216, 230, 0.85)', // Yellow overlay with opacity
+              backgroundColor: 'rgba(173, 216, 230, 0.35)', // Yellow overlay with opacity
               zIndex: 1,
               padding: '3%',
             }}
           >
-            <HeaderText variant={isMobile ? 'h2' : 'h1'} sx={{ color: '#ffffff', fontSize: isMobile ? '3rem' : isIpad ? '4rem' : '5rem', marginBottom: 2 }}>
-              KLIV
-            </HeaderText>
-            <HeaderText variant={isMobile ? 'h3' : 'h2'} sx={{ color: '#000000', fontSize: isMobile ? '2rem' : isIpad ? '3rem' : '4rem' }}>
+            {/* Logo of the Header */}
+            <Image
+              src="/logo/transparant-svart.svg" 
+              alt="Kliv Logo"
+              width={isMobile ? 200 : 300} 
+              height={isMobile ? 100 : 150} 
+              style={{ zIndex: 2 }} 
+            />
+
+            {/* Subheading Text */}
+            <HeaderText variant={isMobile ? 'h3' : 'h2'} sx={{ mt: 2, color: '#000000', fontSize: isMobile ? '2rem' : isIpad ? '3rem' : '4rem' }}>
               IN I IDROTTENS VÄRLD
             </HeaderText>
           </Box>

@@ -76,7 +76,12 @@ const Kontakt = () => {
 
   return (
     <>
-      <Header title='KONTAKTA OSS' description="" />
+      <Header
+        title="KONTAKTA OSS"
+        description="Vi svarar gärna på dina frågor och funderingar. Kontakta oss via formuläret nedan."
+        imageUrl={isMobile ? '/sportstruck/sportstruck1.png' : '/sportstruck/sportstruck1.png'}
+      />
+
       <Box sx={{ backgroundColor: '#FFFFFF' }}>
         <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
           <Container maxWidth={isMobile ? 'sm' : 'lg'}>

@@ -48,7 +48,11 @@ const Judo = () => {
 
   return (
     <>
-      <Header title="JUDO" description="" />
+      <Header
+        title="JUDO"
+        description="Välkommen till judoavdelningen"
+        imageUrl={isMobile ? '/judo/judo1.png' : '/judo/judo1.png'}
+      />
       <Box sx={{ backgroundColor: '#FFFFFF' }}>
         <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
           <Container maxWidth={isMobile ? 'sm' : 'lg'}>
