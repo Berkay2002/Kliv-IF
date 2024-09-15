@@ -62,31 +62,31 @@ const activities = [
     event: 'Sportlov',
     title: 'Sportlovskul',
     description: 'Vår mobila idrottsplats som kommer till olika platser under loven och erbjuder en rad olika idrottsaktiviteter för barn och ungdomar.',
-    image: '/events/spring.jpg',
+    image: '/lovaktiviteter/lovaktiviteter2.png',
   },
   {
     event: 'Påsklov',
     title: 'Påsklovskul',
     description: 'Speciella aktiviteter under påsklovet med fokus på roliga och engagerande idrottsaktiviteter för alla åldrar.',
-    image: '/events/easter.webp',
+    image: '/lovaktiviteter/lovaktiviteter4.jpg',
   },
   {
     event: 'Sommarlov',
     title: 'Sportstruck & Sportoteket',
     description: 'Under sommarlovet erbjuder vi en rad olika idrottsaktiviteter för barn och ungdomar för att hålla dem aktiva och engagerade.',
-    image: '/events/summer.jpg',
+    image: '/sportstruck/sportstruck1.png',
   },
   {
     event: 'Höstlov',
     title: 'Höstlovskul',
     description: 'Höstlovet är fullt av spännande idrottsaktiviteter som är designade för att vara roliga och utmanande.',
-    image: '/events/autumn.jpg',
+    image: '/sportstruck/sportstruck2.png',
   },
   {
     event: 'Jullov',
     title: 'Jullovskul',
     description: 'Under jullovet arrangerar vi speciella aktiviteter som är inriktade på att fira högtiden genom idrott och gemenskap.',
-    image: '/events/winter.jpg',
+    image: '/lovaktiviteter/lovaktiviteter1.png',
   },
 ];
 
@@ -103,8 +103,8 @@ return (
         <Container maxWidth={isMobile ? 'sm' : 'lg'}>
           <Grid container spacing={isMobile ? 3 : 5}>
             <Grid item xs={12} md={6}>
-              <HeaderText variant={isMobile ? "h4" : "h3"} gutterBottom>
-                LOVAKTIVITETER
+              <HeaderText variant={isMobile ? "h5" : "h4"} gutterBottom>
+                VÅRA LOVAKTIVITETER HÄLPER BARN ATT KOMMA IGÅNG MED IDROTT
               </HeaderText>
             </Grid>
             <Grid item xs={12} md={6}>
@@ -125,7 +125,7 @@ return (
         <Container maxWidth={isMobile ? 'sm' : 'lg'}>
           <Grid container spacing={isMobile ? 3 : 5}>
             <Grid item xs={12} md={4}>
-              <HeaderText variant={isMobile ? "h3" : "h2"} gutterBottom sx={{ color: 'white' }}>
+              <HeaderText variant={isMobile ? "h4" : "h3"} gutterBottom sx={{ color: 'white' }}>
                 VAD VI ARRANGERAR
               </HeaderText>
             </Grid>
@@ -151,6 +151,24 @@ return (
           </Grid>
         </Container>
       </Box>
+
+      <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
+        <Container maxWidth={isMobile ? 'sm' : 'lg'}>
+          <Grid container spacing={isMobile ? 3 : 5}>
+            <Grid item xs={12} md={6}>
+              <HeaderText variant={isMobile ? "h5" : "h4"} gutterBottom>
+                TRYGGA OCH KOSTNADSFRIA LOVAKTIVITETER
+              </HeaderText>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Typography variant={isMobile ? "body1" : "h6"} gutterBottom>
+              Våra kostnadsfria lovverksamheter fungerar även som en trygg plats för barn i området att vända sig till under loven. Lovaktiviteterna är alltid kravlösa, kostnadsfria och bemannade med utbildade idrottsledare.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+      
 
       <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...(isMobile || isIpad ? {} : getMarginStyle()) }}>
         <Timeline position={isMobile ? "right" : "alternate"}>

@@ -8,15 +8,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import Image from 'next/image';
 import { MobileStateContext } from './MobileContext';
 
-// Array containing link content for the footer
-const linksContent = [
-  { title: 'Link 1', path: '#' },
-  { title: 'Link 2', path: '#' },
-  { title: 'Link 3', path: '#' },
-  { title: 'Link 4', path: '#' },
-  { title: 'Link 5', path: '#' },
-  { title: 'Link 6', path: '#' },
-];
+
 
 const Footer = () => {
   const { isMobile, isIpad, isDesktop } = useContext(MobileStateContext);
@@ -70,10 +62,8 @@ const Footer = () => {
 
         {/* Contact Information Section */}
         <Grid item xs={12} md={4}>
-          <Typography variant="h4" color="white" align={isMobile ? 'center' : 'left'}>
-            Kontakt
-          </Typography>
           <Typography color="white" align={isMobile ? 'center' : 'left'}>
+            Org-nummer: 802509-8842 <br />
             Kliv Idrottsförening <br />
             Tomtbergavägen 370A <br />
             145 71 Norsborg <br />
@@ -82,17 +72,7 @@ const Footer = () => {
           <br />
         </Grid>
 
-        {/* Links Section */}
-        <Grid item xs={12} md={4}>
-          <Typography variant="h4" color="white" align={isMobile ? 'center' : 'left'}>
-            Länkar
-          </Typography>
-          {linksContent.map((link, index) => (
-            <Link target="_blank" rel="noopener" href={link.path} key={index}>
-              <Typography color="white" align={isMobile ? 'center' : 'left'}>{link.title}</Typography>
-            </Link>
-          ))}
-        </Grid>
+
 
         {/* Social Media Section */}
         <Grid

@@ -147,7 +147,7 @@ const Judo = () => {
                         mb: 1
                       }}
                     >
-                      VART
+                      VAR
                     </HeaderText>
                     <HeaderText 
                       variant={isMobile ? "h3" : "h2"} 
@@ -192,7 +192,7 @@ const Judo = () => {
             <Container sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
               <Box sx={{ position: 'relative', top: '-8rem' }}>
                 <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: 'black' }}>
-                  VART
+                  VAR
                 </HeaderText>
                 <HeaderText 
                   variant={isMobile ? "h3" : "h2"} 

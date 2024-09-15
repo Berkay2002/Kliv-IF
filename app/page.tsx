@@ -179,7 +179,7 @@ const Home = () => {
 
             {/* Subheading Text */}
             <HeaderText variant={isMobile ? 'h3' : 'h2'} sx={{ mt: 2, color: '#000000', fontSize: isMobile ? '2rem' : isIpad ? '3rem' : '4rem' }}>
-              UT I IDROTTENS VÄRLD
+              IN I IDROTTENS VÄRLD
             </HeaderText>
           </Box>
         </Box>
@@ -187,13 +187,13 @@ const Home = () => {
 
 
       <Box sx={{ backgroundColor: 'white' }}>
-        {/* VEM ÄR VI section */}
+        {/* VILKA ÄR VI ? */}
         <Box py={isMobile ? 5 : 10} sx={{ backgroundColor: '#f0f0f0', ...getMarginStyle() }}>
           <Container maxWidth={isMobile ? 'xl' : 'lg'}>
             <Grid container spacing={5} direction={isMobile ? 'column' : 'row'}>
               <Grid item xs={12} md={6}>
                 <HeaderText variant={isMobile ? "h3" : "h2"} gutterBottom sx={{ color: '#000000' }}>
-                  VEM ÄR VI
+                  VILKA VI ÄR 
                 </HeaderText>
               </Grid>
               <Grid item xs={12} md={6}>
@@ -205,7 +205,7 @@ const Home = () => {
           </Container>
         </Box>
 
-        {/* VÅR VISION section */}
+        {/* VÅR VISION */}
         <Box sx={{ backgroundColor: '#ADD8E6', py: isMobile ? 5 : 10, ...getMarginStyle() }}>
           <Container maxWidth={isMobile ? 'xl' : 'lg'}>
             <Grid container spacing={5} direction={isMobile ? 'column' : 'row'}>
@@ -219,7 +219,7 @@ const Home = () => {
                   <Grid item xs={12} sm={6} md={3} textAlign="center">
                     <EmojiPeopleIcon sx={{ fontSize: '3rem', mb: 1, color: 'white' }} />
                     <Typography variant="h6" sx={{ color: 'white' }}>
-                      KOSTNADSFRITT FÖR BARN OCH UNGDOMAR
+                      KOSTNADSFRIA LOVAKTIVITETER FÖR BARN OCH UNGDOMAR
                     </Typography>
                   </Grid>
                   <Grid item xs={12} sm={6} md={3} textAlign="center">
@@ -340,7 +340,7 @@ const Home = () => {
                         mb: 1
                       }}
                     >
-                      VÅRT
+                      VÅR
                     </HeaderText>
                     <HeaderText 
                       variant={isMobile ? "h3" : "h2"} 
@@ -351,17 +351,6 @@ const Home = () => {
                         mb: 1
                       }}
                     >
-                      FANTASTISKA
-                    </HeaderText>
-                    <HeaderText 
-                      variant={isMobile ? "h3" : "h2"} 
-                      sx={{ 
-                        fontWeight: 'bold', 
-                        fontSize: isMobile ? '2.5rem' : '3.5rem',
-                        color: 'black',
-                        mb: 2
-                      }}
-                    >
                       STYRELSE
                     </HeaderText>
                   </Box>
@@ -370,7 +359,7 @@ const Home = () => {
                 {/* Description for mobile and iPad */}
                 <Grid item xs={12}>
                   <Typography variant={isMobile ? "body1" : "h6"}>
-                    Hej! Här är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att <Link href="/kontakta-oss"><span style={{ color: '#ADD8E6', fontWeight: 'bold' }}>kontakta oss</span></Link>.
+                  Vi är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att <Link href="/kontakta-oss"><span style={{ color: '#ADD8E6', fontWeight: 'bold' }}>kontakta oss</span></Link>!
                   </Typography>
                 </Grid>
               </Grid>
@@ -411,18 +400,15 @@ const Home = () => {
             <Container sx={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', justifyContent: 'space-between' }}>
               <Box sx={{ position: 'relative', top: '-8rem' }}>
                 <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: 'black' }}>
-                  VÅRT
+                  VÅR
                 </HeaderText>
                 <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: '#ADD8E6' }}>
-                  FANTASTISKA
-                </HeaderText>
-                <HeaderText variant="h2" sx={{ fontWeight: 'bold', fontSize: '4rem', color: 'black' }}>
                   STYRELSE
                 </HeaderText>
               </Box>
               <Box sx={{ maxWidth: '50%' }}>
                 <Typography variant="h5">
-                  Hej! Här är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att <Link href="/kontakta-oss"><span style={{ color: 'black', fontWeight: 'bold' }}>kontakta oss</span></Link>.
+                Vi är styrelsen för Kliv Idrottsförening. Om du har några frågor eller funderingar är du välkommen att <Link href="/kontakta-oss"><span style={{ color: '#ADD8E6', fontWeight: 'bold' }}>kontakta oss</span></Link>!
                 </Typography>
               </Box>
             </Container>
