@@ -105,7 +105,7 @@ const Judo = () => {
           <Container maxWidth={isMobile ? 'sm' : 'lg'}>
             <Grid container spacing={isMobile ? 3 : 5}>
               <Grid item xs={12}>
-                <HeaderText variant={isMobile ? "h4" : "h3"} gutterBottom>
+                <HeaderText variant={isMobile ? "h5" : "h4"} gutterBottom>
                   TRÄNINGSAVGIFTER OCH BETALNINGSINFORMATION
                 </HeaderText>
                 <Typography variant={isMobile ? "body1" : "h6"} paragraph>
