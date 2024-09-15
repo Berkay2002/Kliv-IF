@@ -179,7 +179,7 @@ const Home = () => {
 
             {/* Subheading Text */}
             <HeaderText variant={isMobile ? 'h3' : 'h2'} sx={{ mt: 2, color: '#000000', fontSize: isMobile ? '2rem' : isIpad ? '3rem' : '4rem' }}>
-              IN I IDROTTENS VÄRLD
+              UT I IDROTTENS VÄRLD
             </HeaderText>
           </Box>
         </Box>
